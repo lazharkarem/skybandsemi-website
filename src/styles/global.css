@@ -1419,6 +1419,10 @@ h3 {
   z-index: 1;
 }
 
+.engagement-card--image > .text-link {
+  position: absolute;
+}
+
 .capability-split {
   display: grid;
   align-items: center;
