@@ -170,15 +170,15 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-h); z-index: 50;
-  background: rgba(10,31,46,.0);
-  border-bottom: 1px solid transparent;
-  transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease;
-}
-.nav.scrolled {
-  background: rgba(10,31,46,.92);
-  border-color: rgba(255,255,255,.07);
+  background: rgba(10,31,46,.96);
+  border-bottom: 1px solid rgba(255,255,255,.07);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  transition: background .4s ease, border-color .4s ease;
+}
+.nav.scrolled {
+  background: rgba(5,15,24,.98);
+  border-color: rgba(255,255,255,.1);
 }
 .nav-inner {
   display: flex; align-items: center;
