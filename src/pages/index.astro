@@ -6,6 +6,8 @@ import CtaBand from '../components/CtaBand.astro'
 import CircuitField from '../components/CircuitField.astro'
 import WaveTrace from '../components/WaveTrace.astro'
 
+const base = import.meta.env.BASE_URL
+
 const engagements = [
   {
     number: '01',
@@ -59,7 +61,6 @@ const applications = [
   { number: '02', title: 'Satellite communications', text: 'High-frequency amplification and front-end functions for Ka, Q and V-band links and terminals.', icon: 'satellite', tags: ['mmWave', 'RF power', 'SiGe'] },
   { number: '03', title: 'Advanced wireless', text: 'Integrated RF solutions for 5G mmWave infrastructure, massive MIMO and next-generation connected systems.', icon: 'wireless', tags: ['RFIC', 'CMOS SOI', '5G'] },
 ] as const
-const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
