@@ -5,58 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="theme-color" content="#0a1f2e"/>
   <title>Privacy Policy — SkyBand Semiconductors</title>
-  <meta name="description" content="Privacy Policy and data protection guidelines for SkyBand Semiconductors."/>
-  <link rel="canonical" href="https://skybandsemi.com/"/>
-  <meta property="og:title" content="SkyBand Semiconductors — RF & mmWave Engineering"/>
-  <meta property="og:description" content="Privacy Policy and data protection guidelines for SkyBand Semiconductors."/>
-  <meta property="og:image" content="https://skybandsemi.com/og.jpg"/>
-  <meta property="og:url" content="https://skybandsemi.com/"/>
+  <meta name="description" content="Privacy policy and GDPR data protection information for SkyBand Semiconductors."/>
+  <link rel="canonical" href="https://skybandsemi.com/privacy"/>
+  <meta property="og:title" content="Privacy Policy — SkyBand Semiconductors"/>
+  <meta property="og:description" content="Privacy policy and GDPR data protection information for SkyBand Semiconductors."/>
   <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"SkyBand Semiconductors","url":"https://skybandsemi.com","email":"contact@skybandsemi.com","description":"RF and mmWave integrated circuit engineering"}
-  </script>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',system-ui,sans-serif;color:#0a1f2e;background:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{
+  --navy-950:#050f18;--navy-900:#0a1f2e;--navy-800:#0d2a3d;--navy-700:#113447;--navy-600:#1a4a5e;
+  --teal-600:#087e98;--teal-500:#0e9db8;--teal-400:#3bbdd4;--teal-300:#68cbd1;--teal-200:#9de2e5;
+  --white:#fff;--ink:#0a1f2e;--muted:#4a6b78;--paper:#f5f7f9;--paper-2:#eef1f4;--line:#dce4e8;--error:#c0392b;
+  --font-head:'Manrope',system-ui,sans-serif;--font-body:'DM Sans',system-ui,sans-serif;
+  --nav-h:72px;--container:1280px;--transition:.22s ease;
+  --shadow-sm:0 2px 8px rgba(10,31,46,.06);--shadow-md:0 8px 24px rgba(10,31,46,.10);--shadow-lg:0 20px 48px rgba(10,31,46,.14);
+}
+/* NAV — always dark, no flash */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;background:rgba(10,31,46,.96);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:background .4s ease,border-color .4s ease}
+.nav-inner{display:flex;align-items:center;height:var(--nav-h);max-width:var(--container);margin:0 auto;padding:0 clamp(20px,4vw,64px);gap:36px}
+.nav-logo{flex-shrink:0;text-decoration:none}
+.nav-logo svg{height:40px;width:auto;display:block}
+.nav-links{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.7);padding:6px 12px;text-decoration:none;transition:color var(--transition);letter-spacing:.01em}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-links a.active{font-weight:600}
+.btn-primary{background:var(--teal-600);color:#fff;border:1px solid var(--teal-600);display:inline-flex;align-items:center;gap:10px;padding:13px 26px;font-size:14px;font-weight:600;font-family:var(--font-body);letter-spacing:.02em;cursor:pointer;transition:background var(--transition),transform var(--transition),box-shadow var(--transition);text-decoration:none}
+.btn-primary:hover{background:var(--teal-500);border-color:var(--teal-500);box-shadow:0 8px 24px rgba(8,126,152,.35);transform:translateY(-1px)}
+.nav-cta{margin-left:8px;padding:10px 20px;font-size:13px}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:flex-end;gap:5px;width:32px;height:32px;margin-left:auto;background:none;border:none;cursor:pointer;padding:0}
+.nav-hamburger span{display:block;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s,width .3s;width:24px}
+.nav-hamburger span:nth-child(2){width:18px}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);width:24px}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);width:24px}
+.nav-mobile{position:fixed;top:var(--nav-h);left:0;right:0;background:var(--navy-900);border-bottom:1px solid rgba(255,255,255,.08);max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1);z-index:49}
+.nav-mobile.open{max-height:100vh}
+.nav-mobile-inner{padding:16px 24px 32px}
+.nav-mobile a{display:block;padding:14px 0;font-size:16px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.75);text-decoration:none;transition:color var(--transition),padding-left var(--transition)}
+.nav-mobile a:hover{color:var(--teal-300);padding-left:8px}
+.skip-link{position:absolute;top:-100px;left:16px;padding:8px 16px;background:var(--teal-600);color:#fff;font-size:13px;font-weight:700;z-index:1000;transition:top .2s;text-decoration:none}
+.skip-link:focus{top:16px}
+/* FOOTER */
+.footer{background:var(--navy-950);color:rgba(255,255,255,.5);padding:80px 0 0;border-top:1px solid rgba(255,255,255,.04)}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;padding-bottom:64px;border-bottom:1px solid rgba(255,255,255,.07)}
+.footer-brand-col p{font-size:13px;line-height:1.75;max-width:280px;color:rgba(255,255,255,.4);margin:16px 0}
+.footer-email{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--teal-300);transition:color var(--transition);text-decoration:none}
+.footer-email:hover{color:#fff}
+.footer-col-title{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:20px}
+.footer-col a{display:block;font-size:13px;font-weight:500;color:rgba(255,255,255,.42);padding:5px 0;transition:color var(--transition);text-decoration:none}
+.footer-col a:hover{color:#fff}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 0;font-size:12px}
+.footer-bottom a{color:rgba(255,255,255,.3);transition:color var(--transition);text-decoration:none}
+.footer-bottom a:hover{color:#fff}
+@media(max-width:1024px){.nav-links,.nav-cta{display:none!important}.nav-hamburger{display:flex}}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:40px}.footer-bottom{flex-direction:column;align-items:flex-start;gap:10px}}
+@media(max-width:520px){.footer-grid{grid-template-columns:1fr}}
+</style>
+  
 </head>
 <body>
-
 <a class="skip-link" href="#main">Skip to content</a>
-
 <nav class="nav" role="navigation" aria-label="Main">
   <div class="nav-inner">
-    <!-- Logo -->
     <a class="nav-logo" href="/" aria-label="SkyBand Semiconductors home">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 56" role="img" aria-label="SkyBand Semiconductors">
-        <rect x="0"  y="17" width="12" height="36" rx="1.5" fill="#0a1f2e" transform="skewX(-11)"/>
-        <rect x="18" y="9"  width="12" height="44" rx="1.5" fill="#0e5f78" transform="skewX(-11)"/>
-        <rect x="36" y="0"  width="12" height="53" rx="1.5" fill="#087e98" transform="skewX(-11)"/>
-        <line x1="0" y1="54" x2="54" y2="54" stroke="#087e98" stroke-width="2"/>
-        <text x="66" y="37" font-family="Manrope,system-ui,sans-serif" font-weight="800" font-size="28" letter-spacing="-1" fill="#0a1f2e">SkyBand</text>
-        <text x="67" y="51" font-family="DM Sans,system-ui,sans-serif" font-size="8.5" letter-spacing="2.4" fill="#5d8a9a">SEMICONDUCTORS</text>
+        <rect x="0" y="17" width="12" height="36" rx="1.5" fill="white" opacity=".65" transform="skewX(-11)"/>
+        <rect x="18" y="9" width="12" height="44" rx="1.5" fill="#3bbdd4" transform="skewX(-11)"/>
+        <rect x="36" y="0" width="12" height="53" rx="1.5" fill="#68cbd1" transform="skewX(-11)"/>
+        <line x1="0" y1="54" x2="54" y2="54" stroke="#68cbd1" stroke-width="1.5"/>
+        <text x="66" y="37" font-family="Manrope,system-ui,sans-serif" font-weight="800" font-size="28" letter-spacing="-1" fill="white">SkyBand</text>
+        <text x="67" y="51" font-family="DM Sans,system-ui,sans-serif" font-size="8.5" letter-spacing="2.4" fill="#68cbd1">SEMICONDUCTORS</text>
       </svg>
     </a>
-
-    <!-- Desktop Links -->
     <div class="nav-links" role="menubar">
-      <a href="/capabilities.html" role="menuitem">Capabilities</a>
-      <a href="/development.html"  role="menuitem">Development</a>
-      <a href="/products.html"     role="menuitem">Products</a>
-      <a href="/technology.html"   role="menuitem">Technology</a>
-      <a href="/about.html"        role="menuitem">About</a>
+      <a href="/capabilities.html">Capabilities</a>
+      <a href="/development.html">Development</a>
+      <a href="/products.html">Products</a>
+      <a href="/technology.html">Technology</a>
+      <a href="/about.html">About</a>
     </div>
-
-    <a href="/contact.html" class="btn btn-primary nav-cta">Discuss a project <span aria-hidden="true">↗</span></a>
-
+    <a href="/contact.html" class="btn-primary nav-cta">Discuss a project <span aria-hidden="true">↗</span></a>
     <button class="nav-hamburger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-
-<!-- Mobile Nav -->
 <div class="nav-mobile" id="mobile-nav" role="dialog" aria-label="Mobile navigation">
   <div class="nav-mobile-inner">
     <a href="/capabilities.html">Capabilities</a>
@@ -65,82 +104,121 @@
     <a href="/technology.html">Technology</a>
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
-    <div class="nav-mobile-cta">
-      <a href="/contact.html" class="btn btn-primary" style="display:inline-flex">Discuss a project <span aria-hidden="true">↗</span></a>
+    <div style="margin-top:24px;">
+      <a href="/contact.html" class="btn-primary" style="display:inline-flex;">Discuss a project ↗</a>
     </div>
   </div>
-
+</div>
 <main id="main">
-  <section class="page-hero"><div class="container page-hero-inner">
-    <div class="breadcrumb"><a href="/">Home</a><span>/</span><span style="color:rgba(255,255,255,.7)">Privacy</span></div>
-    <span class="eyebrow light">Legal</span>
-    <h1 class="h1" style="color:#fff;margin:16px 0 20px;">Privacy Policy</h1>
-    <p class="lead" style="color:rgba(255,255,255,.55);max-width:560px;">How SkyBand Semiconductors collects, uses, and protects your personal data.</p>
-  </div></section>
 
-  <section class="section"><div class="container">
-    <div style="max-width:760px; margin:0 auto; padding:48px; background:#fff; border:1px solid var(--line);">
-      
-      <p style="color:var(--muted); font-size:14px; margin-bottom:32px;"><strong>Last Updated:</strong> September 25, 2026</p>
-
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">1. Introduction</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px;">Welcome to SkyBand Semiconductors. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) or contact us for business inquiries.</p>
-
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">2. The Data We Collect About You</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:12px;">We may collect, use, store and transfer different kinds of personal data about you which we have grouped together as follows:</p>
-      <ul style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px; padding-left:20px;">
-        <li><strong>Identity Data</strong> includes first name, last name, or similar identifier.</li>
-        <li><strong>Contact Data</strong> includes email address and telephone numbers.</li>
-        <li><strong>Professional Data</strong> includes your company name, job title, and project details submitted via our contact forms.</li>
-        <li><strong>Technical Data</strong> includes internet protocol (IP) address, browser type and version, time zone setting and location, and operating system.</li>
-      </ul>
-
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">3. How We Use Your Personal Data</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:12px;">We will only use your personal data when the law allows us to. Most commonly, we will use your personal data in the following circumstances:</p>
-      <ul style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px; padding-left:20px;">
-        <li>To respond to your direct inquiries and business requests submitted via our website.</li>
-        <li>Where it is necessary for our legitimate interests (or those of a third party) and your interests and fundamental rights do not override those interests.</li>
-        <li>Where we need to comply with a legal or regulatory obligation.</li>
-      </ul>
-
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">4. Data Security</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px;">We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know. They will only process your personal data on our instructions and they are subject to a duty of confidentiality.</p>
-
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">5. Your Legal Rights</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:12px;">Under certain circumstances, you have rights under data protection laws in relation to your personal data, including the right to:</p>
-      <ul style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px; padding-left:20px;">
-        <li>Request access to your personal data.</li>
-        <li>Request correction of your personal data.</li>
-        <li>Request erasure of your personal data.</li>
-        <li>Object to processing of your personal data.</li>
-      </ul>
-      
-      <h2 style="font-family:Manrope,sans-serif; font-size:1.4rem; color:var(--ink); margin-bottom:16px;">6. Contact Details</h2>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:8px;">If you have any questions about this privacy policy or our privacy practices, please contact us at:</p>
-      <p style="font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:0;">
-        <strong>SkyBand Semiconductors</strong><br>
-        12 Rue des Moissons<br>
-        14850 Escoville, France<br>
-        Email: <a href="mailto:contact@skybandsemi.com" style="color:var(--teal-600);font-weight:600;">contact@skybandsemi.com</a>
-      </p>
-
+  <section class="page-hero" aria-labelledby="privacy-h1">
+    <div class="container page-hero-inner">
+      <nav aria-label="Breadcrumb" class="breadcrumb"><a href="/">Home</a><span>/</span><span style="color:rgba(255,255,255,.6)">Privacy Policy</span></nav>
+      <span class="eyebrow light" style="margin-bottom:20px;display:inline-block;">Legal</span>
+      <h1 id="privacy-h1" class="h1" style="color:#fff;margin:0 0 20px;">Privacy Policy</h1>
+      <p class="lead" style="color:rgba(255,255,255,.5);max-width:560px;">How SkyBand Semiconductors collects, uses, and protects your personal data.</p>
     </div>
-  </div></section>
-</main>
+  </section>
 
+  <section class="section">
+    <div class="container">
+      <div style="max-width:800px;margin:0 auto;">
+        <p style="font-size:13px;color:var(--muted);margin-bottom:48px;padding:16px 20px;background:var(--paper);border-left:3px solid var(--teal-600);"><strong>Last Updated:</strong> September 2026 &nbsp;·&nbsp; SkyBand Semiconductors, 12 Rue des Moissons, 14850 Escoville, France</p>
+
+        <div style="display:flex;flex-direction:column;gap:48px;">
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">1. Who we are</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;">SkyBand Semiconductors (the "Company") is the data controller responsible for your personal data. We are an RF and mmWave integrated circuit engineering company headquartered at 12 Rue des Moissons, 14850 Escoville, France. You can reach us at <a href="mailto:contact@skybandsemi.com" style="color:var(--teal-600);font-weight:600;text-decoration:none;">contact@skybandsemi.com</a> for any data-related queries.</p>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">2. Data we collect</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">When you submit an enquiry through our contact form, we collect:</p>
+            <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--line);">
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--line);">
+                <div style="padding:14px 16px;background:var(--paper);font-size:13px;font-weight:700;font-family:Manrope,sans-serif;color:var(--ink);">Identity Data</div>
+                <div style="padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.65;">First name, last name, or similar identifier you provide in the form.</div>
+              </div>
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--line);">
+                <div style="padding:14px 16px;background:var(--paper);font-size:13px;font-weight:700;font-family:Manrope,sans-serif;color:var(--ink);">Contact Data</div>
+                <div style="padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.65;">Email address provided in the enquiry form.</div>
+              </div>
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:0;border-bottom:1px solid var(--line);">
+                <div style="padding:14px 16px;background:var(--paper);font-size:13px;font-weight:700;font-family:Manrope,sans-serif;color:var(--ink);">Professional Data</div>
+                <div style="padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.65;">Company name, project type, frequency range, and project description you submit.</div>
+              </div>
+              <div style="display:grid;grid-template-columns:180px 1fr;gap:0;">
+                <div style="padding:14px 16px;background:var(--paper);font-size:13px;font-weight:700;font-family:Manrope,sans-serif;color:var(--ink);">Technical Data</div>
+                <div style="padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.65;">IP address, browser type, and standard server log data collected automatically on site visits.</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">3. How we use your data</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:12px;">We use your personal data solely to:</p>
+            <ul style="font-size:15px;color:var(--muted);line-height:1.78;padding-left:20px;display:flex;flex-direction:column;gap:8px;">
+              <li>Respond to your direct enquiry and provide the information or proposal you requested.</li>
+              <li>Evaluate your project requirements and determine whether we can assist.</li>
+              <li>Comply with any applicable legal or regulatory obligation.</li>
+            </ul>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-top:16px;">We do not use your data for marketing without your explicit prior consent. We do not sell or share your data with third parties for commercial purposes.</p>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">4. Data retention</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;">We retain enquiry data for a period of 36 months from the date of receipt, after which it is securely deleted, unless a longer retention period is required by law or by an ongoing business relationship.</p>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">5. Your rights (GDPR)</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;margin-bottom:16px;">Under the General Data Protection Regulation (GDPR), you have the following rights:</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">access</strong> your personal data</div>
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">rectification</strong> of inaccurate data</div>
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">erasure</strong> ("right to be forgotten")</div>
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">restrict</strong> processing</div>
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">data portability</strong></div>
+              <div style="padding:14px 16px;background:var(--paper);border-left:2px solid var(--teal-600);font-size:13px;color:var(--muted);">Right to <strong style="color:var(--ink);">object</strong> to processing</div>
+            </div>
+            <p style="font-size:14px;color:var(--muted);line-height:1.78;margin-top:16px;">To exercise any of these rights, please contact us at <a href="mailto:contact@skybandsemi.com" style="color:var(--teal-600);font-weight:600;text-decoration:none;">contact@skybandsemi.com</a>. We will respond within 30 days.</p>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">6. Security</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;">We implement appropriate technical and organisational security measures to protect your personal data against unauthorised access, alteration, disclosure, or destruction. Our website uses HTTPS encryption for all data transfers.</p>
+          </div>
+
+          <div>
+            <h2 style="font-family:Manrope,sans-serif;font-size:1.3rem;color:var(--ink);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--line);">7. Contact</h2>
+            <p style="font-size:15px;color:var(--muted);line-height:1.78;">For questions about this policy or to exercise your rights:</p>
+            <div style="margin-top:16px;padding:24px;background:var(--paper);border:1px solid var(--line);">
+              <strong style="font-family:Manrope,sans-serif;color:var(--ink);display:block;margin-bottom:8px;">SkyBand Semiconductors</strong>
+              <p style="font-size:14px;color:var(--muted);line-height:1.65;">12 Rue des Moissons, 14850 Escoville, France<br>
+              Email: <a href="mailto:contact@skybandsemi.com" style="color:var(--teal-600);font-weight:600;text-decoration:none;">contact@skybandsemi.com</a></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand-col">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 44">
-          <rect x="0" y="13" width="9" height="28" rx="1.2" fill="white" transform="skewX(-11)"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 44" style="height:36px;width:auto;">
+          <rect x="0" y="13" width="9" height="28" rx="1.2" fill="white" opacity=".65" transform="skewX(-11)"/>
           <rect x="14" y="7" width="9" height="34" rx="1.2" fill="#3bbdd4" transform="skewX(-11)"/>
           <rect x="28" y="0" width="9" height="42" rx="1.2" fill="#68cbd1" transform="skewX(-11)"/>
           <line x1="0" y1="43" x2="42" y2="43" stroke="#68cbd1" stroke-width="1.5"/>
           <text x="50" y="29" font-family="Manrope,system-ui,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.8" fill="white">SkyBand</text>
           <text x="51" y="40" font-family="DM Sans,system-ui,sans-serif" font-size="6.8" letter-spacing="1.9" fill="#68cbd1">SEMICONDUCTORS</text>
         </svg>
-        <p>RF &amp; mmWave integrated circuit engineering. From first requirements to validated hardware.</p>
+        <p>RF &amp; mmWave integrated circuit engineering. From first system requirements to validated silicon and hardware.</p>
         <a href="mailto:contact@skybandsemi.com" class="footer-email">contact@skybandsemi.com ↗</a>
       </div>
       <div class="footer-col">
@@ -159,20 +237,19 @@
         <div class="footer-col-title">Company</div>
         <a href="/about.html">About SkyBand</a>
         <a href="/contact.html">Contact Us</a>
-        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07);">
-          <strong style="display:block;font-family:Manrope,sans-serif;font-size:12px;color:#fff;margin-bottom:8px;">Headquarters</strong>
-          <p style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;margin:0 0 12px 0;">12 Rue des Moissons<br>14850 Escoville, France</p>
-          <div style="font-size:9px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.4);">Activité principale (NAF/APE): Ingénierie, études techniques</div>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07);">
+          <strong style="display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Headquarters</strong>
+          <p style="font-size:12px;color:rgba(255,255,255,.35);line-height:1.65;margin:0 0 8px 0;">12 Rue des Moissons<br>14850 Escoville, France</p>
+          <span style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.25);">NAF/APE : Ingénierie, études techniques</span>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 SkyBand Semiconductors. All rights reserved.</span>
-      <div style="display:flex;gap:24px"><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>
+      <div style="display:flex;gap:24px;"><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div>
     </div>
   </div>
 </footer>
-
 <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
