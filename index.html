@@ -222,6 +222,10 @@
     </line>
   </g>
 </svg>
+  <div style="position:absolute;inset:0;z-index:0;pointer-events:none;">
+  <img src="/images/hero-wafer.jpg" alt="" aria-hidden="true"
+    style="width:100%;height:100%;object-fit:cover;opacity:.18;mix-blend-mode:screen;" loading="eager" fetchpriority="high"/>
+</div>
   <div class="container hero-content">
     <div class="hero-split">
       <div>
@@ -358,7 +362,10 @@
         <p style="font-size:14px; line-height:1.75; color:var(--muted); flex:1;">Specialist RF, MMIC and RFIC expertise embedded in your team — circuit design, EM analysis, system architecture, validation.</p>
         <a href="/capabilities.html" class="btn-ghost" style="margin-top:28px; align-self:flex-start;">Explore services →</a>
       </article>
-      <article class="card" style="min-height:380px; display:flex; flex-direction:column; background:var(--navy-800); border-color:var(--navy-700); color:#fff;">
+      <article style="min-height:380px; display:flex; flex-direction:column; position:relative; overflow:hidden; border:1px solid var(--navy-700);">
+        <img src="/images/pcb-mmic.jpg" alt="MMIC circuit board" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,31,46,.92) 0%,rgba(10,31,46,.75) 100%);"></div>
+        <div style="position:relative;z-index:1;padding:36px;display:flex;flex-direction:column;height:100%;color:#fff;">
         <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:60px;">
           <span class="num-label-light">02</span>
           <svg viewBox="0 0 36 36" width="36" height="36" fill="none" stroke="rgba(104,203,209,.5)" stroke-width="1.5" aria-hidden="true">
@@ -368,7 +375,7 @@
         <h3 style="font-size:1.5rem; letter-spacing:-.03em; margin-bottom:12px; font-family:var(--font-head); color:#fff;">Full Project<br>Development</h3>
         <p style="font-size:14px; line-height:1.75; color:rgba(255,255,255,.5); flex:1;">One continuous engineering path from system requirements through tape-out, silicon packaging, and final hardware validation.</p>
         <a href="/development.html" class="btn-ghost" style="margin-top:28px; align-self:flex-start; color:#fff; border-bottom-color:rgba(255,255,255,.3);">See the process →</a>
-      </article>
+        </div></article>
       <article class="card" style="min-height:380px; display:flex; flex-direction:column; background:#fff;">
         <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:60px;">
           <span class="num-label">03</span>
