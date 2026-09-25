@@ -139,20 +139,25 @@ document.querySelectorAll('.freq-bar').forEach(bar => {
   }
 })
 
-/* ── DATA PULSES ON CIRCUIT GRIDS ───────────────────── */
+/* ── AMBIENT GLOW NODES (semiconductor signal pulses) ─── */
 document.querySelectorAll('.bg-circuit, .bg-circuit-dark, .page-hero').forEach(bg => {
   if (window.getComputedStyle(bg).position === 'static') bg.style.position = 'relative'
   bg.style.overflow = 'hidden'
-  for (let i = 0; i < 2; i++) {
+  const count = 5
+  for (let i = 0; i < count; i++) {
+    // Large glow
     const px = document.createElement('div')
     px.className = 'data-pulse-x'
-    px.style.top = Math.random() * 80 + 10 + '%'
-    px.style.animationDelay = Math.random() * 8 + 's'
+    px.style.top = (Math.random() * 80 + 10) + '%'
+    px.style.left = (Math.random() * 80 + 10) + '%'
+    px.style.animationDelay = (i * 1.6) + 's'
     bg.appendChild(px)
+    // Small glow
     const py = document.createElement('div')
     py.className = 'data-pulse-y'
-    py.style.left = Math.random() * 80 + 10 + '%'
-    py.style.animationDelay = Math.random() * 12 + 's'
+    py.style.top = (Math.random() * 70 + 15) + '%'
+    py.style.left = (Math.random() * 70 + 15) + '%'
+    py.style.animationDelay = (i * 2.2 + 1.1) + 's'
     bg.appendChild(py)
   }
 })

@@ -442,26 +442,26 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   filter: drop-shadow(0 0 16px rgba(104,203,209,.4));
 }
 
-/* ── Data pulses on circuit backgrounds ────────────────────── */
-@keyframes data-flow-x {
-  0% { transform: translateX(-100%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(100vw); opacity: 0; }
-}
-@keyframes data-flow-y {
-  0% { transform: translateY(-100%); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
+/* ── Ambient Glow Node (semiconductor signal pulses) ──────── */
+@keyframes glow-pulse {
+  0%   { opacity: 0; transform: scale(0.6); }
+  40%  { opacity: 0.5; transform: scale(1); }
+  70%  { opacity: 0.3; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(0.6); }
 }
 .data-pulse-x {
-  position: absolute; height: 1px; width: 80px;
-  background: linear-gradient(90deg, transparent, var(--teal-400), transparent);
-  animation: data-flow-x 45s linear infinite; pointer-events: none;
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(104,203,209,0.18) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glow-pulse 8s ease-in-out infinite;
 }
 .data-pulse-y {
-  position: absolute; width: 1px; height: 80px;
-  background: linear-gradient(180deg, transparent, var(--teal-400), transparent);
-  animation: data-flow-y 50s linear infinite; pointer-events: none;
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,189,212,0.14) 0%, transparent 70%);
+  pointer-events: none;
+  animation: glow-pulse 11s ease-in-out infinite;
 }
