@@ -742,6 +742,8 @@ h3 {
 
 .premium-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 330px;
   overflow: hidden;
   padding: clamp(26px, 3vw, 40px);
@@ -836,9 +838,8 @@ h3 {
 }
 
 .premium-card .text-link {
-  position: absolute;
-  bottom: clamp(26px, 3vw, 40px);
-  left: clamp(26px, 3vw, 40px);
+  margin-top: auto;
+  padding-top: 24px;
 }
 
 .image-card {
@@ -1419,9 +1420,6 @@ h3 {
   z-index: 1;
 }
 
-.engagement-card--image > .text-link {
-  position: absolute;
-}
 
 .capability-split {
   display: grid;
