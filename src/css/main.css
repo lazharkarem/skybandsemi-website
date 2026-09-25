@@ -419,3 +419,49 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
     opacity: 1 !important; transform: none !important;
   }
 }
+
+/* ── Page Transition (Wafer Scan) ─────────────────────────── */
+.page-transition {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(5,15,24,0.98); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  pointer-events: none; transform: translateX(100%);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.page-transition::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--teal-300);
+  box-shadow: 0 0 20px var(--teal-400), 0 0 40px var(--teal-300), 0 0 60px var(--teal-200);
+}
+.page-transition::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(104,203,209,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(104,203,209,.06) 1px, transparent 1px);
+  background-size: 40px 40px; pointer-events: none;
+}
+.page-transition-logo {
+  opacity: 0; transform: scale(0.9); position: relative; z-index: 2;
+  filter: drop-shadow(0 0 16px rgba(104,203,209,.4));
+}
+
+/* ── Data pulses on circuit backgrounds ────────────────────── */
+@keyframes data-flow-x {
+  0% { transform: translateX(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+@keyframes data-flow-y {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+.data-pulse-x {
+  position: absolute; height: 1px; width: 80px;
+  background: linear-gradient(90deg, transparent, var(--teal-400), transparent);
+  animation: data-flow-x 4s linear infinite; pointer-events: none;
+}
+.data-pulse-y {
+  position: absolute; width: 1px; height: 80px;
+  background: linear-gradient(180deg, transparent, var(--teal-400), transparent);
+  animation: data-flow-y 5s linear infinite; pointer-events: none;
+}

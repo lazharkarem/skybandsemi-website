@@ -12,149 +12,184 @@ if (nav) {
   }, { passive: true })
 }
 
-/* ── Hamburger menu ─────────────────────────────────── */
+/* ── Mobile Nav ─────────────────────────────────────── */
 const hamburger = document.querySelector('.nav-hamburger')
-const mobileNav = document.querySelector('.nav-mobile')
+const mobileNav = document.getElementById('mobile-nav')
 if (hamburger && mobileNav) {
   hamburger.addEventListener('click', () => {
-    const open = hamburger.classList.toggle('open')
-    mobileNav.classList.toggle('open', open)
-    hamburger.setAttribute('aria-expanded', String(open))
-    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu')
-  })
-  mobileNav.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => {
-      hamburger.classList.remove('open')
-      mobileNav.classList.remove('open')
-      hamburger.setAttribute('aria-expanded', 'false')
-      hamburger.setAttribute('aria-label', 'Open menu')
-    })
-  )
-  document.addEventListener('click', e => {
-    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-      hamburger.classList.remove('open')
-      mobileNav.classList.remove('open')
-    }
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true'
+    hamburger.setAttribute('aria-expanded', !isOpen)
+    hamburger.classList.toggle('open')
+    mobileNav.classList.toggle('open')
   })
 }
 
-/* ── Active nav link ─────────────────────────────────── */
-const path = window.location.pathname.replace(/\/$/, '') || '/index'
-document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(a => {
-  const href = a.getAttribute('href')?.replace(/\/$/, '')
-  if (href && (path.endsWith(href) || (path === '' && href === '/') || (path.includes('index') && href === '/'))) {
-    a.classList.add('active')
+/* ── Active Nav Link ────────────────────────────────── */
+const currentPath = window.location.pathname
+document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(link => {
+  if (link.getAttribute('href') === currentPath || (currentPath === '/' && link.getAttribute('href') === '/')) {
+    link.classList.add('active')
   }
 })
 
-/* ── Counter animation ───────────────────────────────── */
-function animateCounter(el) {
-  const target = parseFloat(el.dataset.count)
-  if (isNaN(target)) return
-  const suffix = el.dataset.suffix || ''
-  const prefix = el.dataset.prefix || ''
-  const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals) : 0
-  gsap.fromTo({ val: 0 }, { val: target }, {
-    duration: 1.8,
-    ease: 'power2.out',
-    onUpdate: function () {
-      el.textContent = prefix + this.targets()[0].val.toFixed(decimals) + suffix
-    },
-    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
-  })
+/* ── PAGE TRANSITION (Wafer Scan Shimmer) ───────────── */
+const createTransitionElement = () => {
+  const overlay = document.createElement('div')
+  overlay.className = 'page-transition'
+  overlay.innerHTML = `
+    <svg class="page-transition-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 44" style="height:48px;width:auto;">
+      <rect x="0" y="13" width="9" height="28" rx="1.2" fill="white" opacity=".6" transform="skewX(-11)"/>
+      <rect x="14" y="7" width="9" height="34" rx="1.2" fill="#3bbdd4" transform="skewX(-11)"/>
+      <rect x="28" y="0" width="9" height="42" rx="1.2" fill="#68cbd1" transform="skewX(-11)"/>
+      <line x1="0" y1="43" x2="42" y2="43" stroke="#68cbd1" stroke-width="1.5"/>
+      <text x="50" y="29" font-family="Manrope,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.8" fill="white">SkyBand</text>
+      <text x="51" y="40" font-family="DM Sans,sans-serif" font-size="6.8" letter-spacing="1.9" fill="#68cbd1">SEMICONDUCTORS</text>
+    </svg>`
+  document.body.appendChild(overlay)
+  return overlay
 }
-document.querySelectorAll('[data-count]').forEach(animateCounter)
+const overlay = createTransitionElement()
 
-/* ── GSAP Scroll animations ──────────────────────────── */
-function initAnimations() {
-  gsap.utils.toArray('.anim-fade').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, y: 0, duration: .85, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-    })
-  })
-  gsap.utils.toArray('.anim-fade-left').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, x: 0, duration: .9, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-    })
-  })
-  gsap.utils.toArray('.anim-fade-right').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, x: 0, duration: .9, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-    })
-  })
-  gsap.utils.toArray('.anim-scale').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, scale: 1, duration: .8, ease: 'power3.out',
-      scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-    })
-  })
-  document.querySelectorAll('.anim-stagger').forEach(group => {
-    const children = group.querySelectorAll(':scope > *')
-    children.forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(24px)' })
-    gsap.to(children, {
-      opacity: 1, y: 0, duration: .7, stagger: .09, ease: 'power3.out',
-      scrollTrigger: { trigger: group, start: 'top 85%', once: true }
-    })
-  })
+// Animate OUT on load
+gsap.set(overlay, { x: '0%' })
+gsap.set('.page-transition-logo', { opacity: 1, scale: 1 })
+const tl = gsap.timeline()
+tl.to('.page-transition-logo', { opacity: 0, scale: 0.95, duration: 0.3, ease: 'power2.inOut', delay: 0.1 })
+  .to(overlay, { x: '-100%', duration: 0.65, ease: 'power4.inOut' })
+  .set(overlay, { x: '100%' }) // Reset for next time
 
-  /* Process step connector lines */
-  document.querySelectorAll('.process-step').forEach((step, i) => {
-    gsap.from(step, {
-      opacity: 0, y: 30, duration: .7, delay: i * 0.1, ease: 'power3.out',
-      scrollTrigger: { trigger: step, start: 'top 88%', once: true }
-    })
-  })
-
-  /* Frequency bars animate width on scroll */
-  document.querySelectorAll('.freq-bar').forEach(bar => {
-    const w = bar.style.width
-    bar.style.width = '0%'
-    gsap.to(bar, {
-      width: w, duration: 1.4, ease: 'power3.out',
-      scrollTrigger: { trigger: bar, start: 'top 90%', once: true }
-    })
-  })
-}
-
-/* ── Hero entrance ───────────────────────────────────── */
-function heroEntrance() {
-  const items = document.querySelectorAll('.hero-enter')
-  if (!items.length) return
-  items.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)' })
-  gsap.to('.hero-enter', {
-    opacity: 1, y: 0, duration: .8, stagger: .13, ease: 'power3.out', delay: .15
-  })
-}
-
-/* ── Scan line on hero panel ─────────────────────────── */
-function initScanline() {
-  const panel = document.querySelector('.hero-panel')
-  if (!panel) return
-  const line = document.createElement('div')
-  line.style.cssText = `position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(104,203,209,.25),transparent);pointer-events:none;z-index:10;`
-  panel.appendChild(line)
-  gsap.fromTo(line,
-    { top: '0%' },
-    { top: '100%', duration: 3, ease: 'none', repeat: -1, delay: .5 }
-  )
-}
-
-/* ── Parallax on circuit SVG ─────────────────────────── */
-function initParallax() {
-  const svg = document.querySelector('.hero-circuit-svg')
-  if (!svg) return
-  gsap.to(svg, {
-    y: '12%', ease: 'none',
-    scrollTrigger: { trigger: 'body', start: 'top top', end: '40% top', scrub: 1 }
-  })
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  initAnimations()
-  heroEntrance()
-  initScanline()
-  initParallax()
+// Intercept clicks for internal links
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a')
+  if (!link) return
+  const href = link.getAttribute('href')
+  if (href && href.startsWith('/') && !href.startsWith('#')) {
+    e.preventDefault()
+    // Close mobile nav if open
+    if (mobileNav.classList.contains('open')) {
+      hamburger.click()
+    }
+    gsap.timeline()
+      .to(overlay, { x: '0%', duration: 0.65, ease: 'power4.inOut' })
+      .to('.page-transition-logo', { opacity: 1, scale: 1, duration: 0.3, ease: 'power2.out' }, "-=0.2")
+      .call(() => { window.location.href = href })
+  }
 })
+
+/* ── BINARY DECODE EFFECT (Semiconductor Vibe) ──────── */
+const decodeText = (element) => {
+  const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const original = element.innerText
+  const length = original.length
+  let iterations = 0
+  
+  element.style.opacity = 1
+  const interval = setInterval(() => {
+    element.innerText = original.split('').map((letter, index) => {
+      if(index < iterations) return original[index]
+      return chars[Math.floor(Math.random() * chars.length)]
+    }).join('')
+    
+    if(iterations >= length) clearInterval(interval)
+    iterations += 1/3 // Speed of decode
+  }, 20)
+}
+
+document.querySelectorAll('.h1, .h2').forEach(el => {
+  el.style.opacity = 0 // Hide initially
+  ScrollTrigger.create({
+    trigger: el,
+    start: 'top 90%',
+    onEnter: () => decodeText(el),
+    once: true
+  })
+})
+
+/* ── DATA PULSES ON CIRCUIT GRIDS ───────────────────── */
+document.querySelectorAll('.bg-circuit, .bg-circuit-dark, .page-hero').forEach(bg => {
+  // Inject relative positioning if not present
+  if (window.getComputedStyle(bg).position === 'static') {
+    bg.style.position = 'relative'
+  }
+  bg.style.overflow = 'hidden' // contain pulses
+  
+  // Add 2 horizontal and 2 vertical pulses
+  for(let i=0; i<2; i++) {
+    const pulseX = document.createElement('div')
+    pulseX.className = 'data-pulse-x'
+    pulseX.style.top = Math.random() * 80 + 10 + '%'
+    pulseX.style.animationDelay = Math.random() * 2 + 's'
+    bg.appendChild(pulseX)
+
+    const pulseY = document.createElement('div')
+    pulseY.className = 'data-pulse-y'
+    pulseY.style.left = Math.random() * 80 + 10 + '%'
+    pulseY.style.animationDelay = Math.random() * 3 + 's'
+    bg.appendChild(pulseY)
+  }
+})
+
+/* ── Existing Animations ────────────────────────────── */
+gsap.utils.toArray('.anim-fade').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    opacity: 1, y: 0, duration: 0.8, ease: 'power3.out'
+  })
+})
+gsap.utils.toArray('.anim-fade-left').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    opacity: 1, x: 0, duration: 0.8, ease: 'power3.out'
+  })
+})
+gsap.utils.toArray('.anim-fade-right').forEach(el => {
+  gsap.to(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%' },
+    opacity: 1, x: 0, duration: 0.8, ease: 'power3.out'
+  })
+})
+gsap.utils.toArray('.anim-stagger').forEach(container => {
+  gsap.to(container.children, {
+    scrollTrigger: { trigger: container, start: 'top 85%' },
+    opacity: 1, y: 0, x: 0, scale: 1, duration: 0.8,
+    stagger: 0.1, ease: 'power3.out'
+  })
+})
+
+/* ── Hero Parallax ──────────────────────────────────── */
+const heroCircuit = document.querySelector('.hero-circuit-svg')
+if (heroCircuit) {
+  gsap.to(heroCircuit, {
+    y: '20%', ease: 'none',
+    scrollTrigger: { trigger: '.home-hero', start: 'top top', end: 'bottom top', scrub: true }
+  })
+}
+
+/* ── Stat Counters ──────────────────────────────────── */
+const stats = document.querySelectorAll('.stat-num')
+if (stats.length > 0) {
+  stats.forEach(stat => {
+    const target = parseInt(stat.getAttribute('data-count'))
+    const suffix = stat.getAttribute('data-suffix') || ''
+    gsap.to({ val: 0 }, {
+      val: target, duration: 2, ease: 'power3.out',
+      scrollTrigger: { trigger: stat, start: 'top 90%' },
+      onUpdate: function() { stat.innerText = Math.floor(this.targets()[0].val) + suffix }
+    })
+  })
+}
+
+/* ── Frequency Bars ─────────────────────────────────── */
+const freqBars = document.querySelectorAll('.freq-bar')
+if (freqBars.length > 0) {
+  freqBars.forEach(bar => {
+    const width = bar.style.width || bar.getAttribute('data-width')
+    if(width) {
+      bar.style.width = '0%'
+      gsap.to(bar, {
+        width: width, duration: 1.5, ease: 'power3.out', delay: 0.2,
+        scrollTrigger: { trigger: bar, start: 'top 90%' }
+      })
+    }
+  })
+}
