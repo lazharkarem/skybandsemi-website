@@ -32,41 +32,9 @@ document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(link => {
   }
 })
 
-/* ── PAGE TRANSITION (click-only, no on-load animation) ─ */
-let overlay = document.querySelector('.page-transition')
-if (!overlay) {
-  overlay = document.createElement('div')
-  overlay.className = 'page-transition'
-  overlay.innerHTML = `
-    <svg class="page-transition-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 44" style="height:48px;width:auto;">
-      <rect x="0" y="13" width="9" height="28" rx="1.2" fill="white" opacity=".6" transform="skewX(-11)"/>
-      <rect x="14" y="7" width="9" height="34" rx="1.2" fill="#3bbdd4" transform="skewX(-11)"/>
-      <rect x="28" y="0" width="9" height="42" rx="1.2" fill="#68cbd1" transform="skewX(-11)"/>
-      <line x1="0" y1="43" x2="42" y2="43" stroke="#68cbd1" stroke-width="1.5"/>
-      <text x="50" y="29" font-family="Manrope,sans-serif" font-weight="800" font-size="22" letter-spacing="-0.8" fill="white">SkyBand</text>
-      <text x="51" y="40" font-family="DM Sans,sans-serif" font-size="6.8" letter-spacing="1.9" fill="#68cbd1">SEMICONDUCTORS</text>
-    </svg>`
-  document.body.appendChild(overlay)
-}
-
-// Ensure overlay is off-screen (no on-load animation)
-gsap.set(overlay, { x: '105%' })
-
-// Intercept clicks — sweep in slowly, then navigate
-document.addEventListener('click', (e) => {
-  const link = e.target.closest('a')
-  if (!link) return
-  const href = link.getAttribute('href')
-  if (href && href.startsWith('/') && !href.startsWith('#') && href !== window.location.pathname) {
-    e.preventDefault()
-    if (mobileNav && mobileNav.classList.contains('open')) hamburger.click()
-    gsap.set('.page-transition-logo', { opacity: 0, scale: 0.92 })
-    gsap.timeline()
-      .to(overlay, { x: '0%', duration: 1.8, ease: 'power4.inOut' })
-      .to('.page-transition-logo', { opacity: 1, scale: 1, duration: 0.5, ease: 'power2.out' }, '-=0.4')
-      .call(() => { window.location.href = href }, null, '+=0.15')
-  }
-})
+/* ── Page Transitions handled natively by CSS @view-transition ─
+   No JavaScript needed — browser handles the animation automatically
+   See main.css: @view-transition { navigation: auto } ────────── */
 
 /* ── HEADLINE REVEAL (blur slide-in) ──────────────────── */
 document.querySelectorAll('.h1, .h2').forEach(el => {

@@ -486,3 +486,28 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 
 /* Unused but kept for compat */
 .data-pulse-x, .data-pulse-y { display: none; }
+
+/* ── Native View Transitions API ─────────────────────────────── */
+@view-transition {
+  navigation: auto;
+}
+
+/* Outgoing page: slide + fade out to the LEFT */
+::view-transition-old(root) {
+  animation: vt-slide-out 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Incoming page: slide + fade in from the RIGHT */
+::view-transition-new(root) {
+  animation: vt-slide-in 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes vt-slide-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-32px); }
+}
+
+@keyframes vt-slide-in {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
