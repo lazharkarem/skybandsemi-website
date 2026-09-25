@@ -511,3 +511,20 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
   from { opacity: 0; transform: translateX(32px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+/* ── View Transition: prevent white bleed between pages ──────── */
+::view-transition-image-pair(root) {
+  isolation: auto;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
+}
+/* Dark background during transition so it never flashes white */
+::view-transition-group(root) {
+  background: #050f18;
+}
+html {
+  background-color: #050f18;
+  color-scheme: dark;
+}
+
