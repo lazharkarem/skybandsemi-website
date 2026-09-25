@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+import CtaBand from '../components/CtaBand.astro'
+
+const disciplineMatrix = [
+  { name: 'System Architecture', strength: 85 },
+  { name: 'RFIC / MMIC Design', strength: 70 },
+  { name: 'EM Analysis', strength: 60 },
+  { name: 'Layout & DRC/LVS', strength: 55 },
+  { name: 'Validation & Review', strength: 45 },
+]
+
+const disciplines = [
+  {
+    number: '01',
+    title: 'System architecture',
+    text: 'Requirements analysis, feasibility studies and signal-chain definition across frequency and power domains.',
+  },
+  {
+    number: '02',
+    title: 'RFIC / MMIC circuit design',
+    text: 'Schematic, simulation and performance optimization from GHz to mmWave frequency ranges.',
+  },
+  {
+    number: '03',
+    title: 'Electromagnetic analysis',
+    text: 'EM modelling of critical interconnects, passives, substrate coupling and radiation effects.',
+  },
+  {
+    number: '04',
+    title: 'Validation & technical support',
+    text: 'Design review, on-wafer and bench measurement guidance, characterization interpretation.',
+  },
+]
+
+const circuitGroups = [
+  {
+    label: 'A — Amplification',
+    items: [
+      { name: 'Power Amplifiers (PA)', detail: 'GaN · SiGe' },
+      { name: 'Low Noise Amplifiers (LNA)', detail: 'SiGe · CMOS' },
+      { name: 'Driver Amplifiers', detail: 'All PDKs' },
+    ],
+  },
+  {
+    label: 'B — Control functions',
+    items: [
+      { name: 'RF Switches', detail: 'SOI' },
+      { name: 'Variable Attenuators', detail: '6-bit' },
+      { name: 'Phase Shifters', detail: '360°' },
+      { name: 'Beamforming ICs', detail: '' },
+    ],
+  },
+  {
+    label: 'C — Front-end integration',
+    items: [
+      { name: 'Front-End Modules (FEM)', detail: '' },
+      { name: 'Filters & Duplexers', detail: '' },
+      { name: 'Matching Networks', detail: '' },
+      { name: 'RF Sub-systems', detail: '' },
+    ],
+  },
+]
+---
+
+<BaseLayout
+  title="Capabilities — SkyBand Semiconductors"
+  description="RF, MMIC and RFIC engineering capabilities — system architecture, circuit design, EM analysis and validation."
+>
+  <PageHero
+    eyebrow="Consulting & engineering"
+    title="Specialist capability at circuit and system level."
+    lead="We strengthen engineering teams with focused expertise across architecture, simulation, implementation, optimization and validation."
+    current="Capabilities"
+  />
+
+  <section class="section section--dark" aria-labelledby="capabilities-overview-title">
+    <div class="container capability-split">
+      <div class="engineering-board" data-reveal>
+        <div class="engineering-board-header">
+          <span>Engineering scope</span>
+          <span class="board-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        </div>
+        <div class="discipline-matrix" role="list" aria-label="Engineering scope">
+          {disciplineMatrix.map((discipline) => (
+            <div class="matrix-row" role="listitem">
+              <strong>{discipline.name}</strong>
+              <div class="matrix-line" style={`--strength: ${discipline.strength}%`} aria-hidden="true"></div>
+            </div>
+          ))}
+        </div>
+        <div class="tag-row" style="margin-top: 20px;">
+          <span class="status">Sub-6 GHz</span>
+          <span class="status">6–30 GHz</span>
+          <span class="status">30+ GHz (mmWave)</span>
+        </div>
+      </div>
+
+      <div data-reveal>
+        <span class="eyebrow">Four core disciplines</span>
+        <h2 class="h2" id="capabilities-overview-title">What we bring to your engineering team.</h2>
+        <p class="lead lead--light">Whether embedded in your organisation or solving an isolated design challenge, SkyBand delivers focused expertise at the point where it matters most.</p>
+        <div class="capability-list">
+          {disciplines.map((discipline) => (
+            <article class="capability-item">
+              <span class="capability-item-number">{discipline.number}</span>
+              <div>
+                <h3>{discipline.title}</h3>
+                <p>{discipline.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="validation-feature" aria-labelledby="validation-title">
+    <img
+      src="/images/lab-vna.jpg"
+      alt="RF measurement laboratory with vector network analyzer showing S-parameters"
+      width="1264"
+      height="848"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="feature-overlay" data-reveal>
+      <span class="technical-label">Step 11 — Measurement &amp; Validation</span>
+      <h2 id="validation-title">Every design validated on the measurement bench.</h2>
+      <p>S-parameter characterization, noise figure measurement, large-signal power sweeps — the complete RF measurement workflow.</p>
+    </div>
+  </section>
+
+  <section class="section section--paper" id="circuits" aria-labelledby="circuit-scope-title">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Circuit expertise"
+        title="What we design."
+        text="Discrete RF functions and integrated front-end solutions designed around application requirements."
+        align="center"
+        id="circuit-scope-title"
+      />
+      <div class="circuit-groups" data-reveal-group>
+        {circuitGroups.map((group) => (
+          <article class="circuit-group">
+            <h3 class="circuit-group-header">{group.label}</h3>
+            <div>
+              {group.items.map((item) => (
+                <div class="circuit-row">
+                  <strong>{item.name}</strong>
+                  {item.detail && <span>{item.detail}</span>}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ready to discuss a design challenge?"
+    text="Tell us the frequency range, target specs and system context."
+    label="Start the conversation"
+    href="/contact/"
+  />
+</BaseLayout>

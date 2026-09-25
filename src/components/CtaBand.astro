@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string
+  text: string
+  label?: string
+  href?: string
+}
+
+const {
+  title,
+  text,
+  label = 'Discuss your project',
+  href = '/contact/',
+} = Astro.props
+---
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-panel" data-reveal>
+      <div class="cta-signal" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div>
+        <span class="technical-label">Next step</span>
+        <h2>{title}</h2>
+        <p>{text}</p>
+      </div>
+      <a class="button button--light" href={href}>
+        {label}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+</section>

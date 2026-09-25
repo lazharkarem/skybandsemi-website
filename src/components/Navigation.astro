@@ -1,0 +1,52 @@
+---
+import Logo from './Logo.astro'
+
+const items = [
+  { label: 'Capabilities', href: '/capabilities/' },
+  { label: 'Development', href: '/development/' },
+  { label: 'Products', href: '/products/' },
+  { label: 'Technology', href: '/technology/' },
+  { label: 'About', href: '/about/' },
+]
+
+const currentPath = Astro.url.pathname
+const isCurrent = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href)
+---
+
+<header class="site-header" data-site-header>
+  <div class="container nav-shell">
+    <a class="nav-logo" href="/" aria-label="SkyBand Semiconductors home">
+      <Logo />
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {items.map((item) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+
+    <a class="button button--ghost-light button--compact nav-contact" href="/contact/">
+      Discuss a project
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-navigation" data-menu-toggle>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="mobile-panel" id="mobile-navigation" aria-hidden="true" inert data-mobile-panel>
+    <nav class="container mobile-nav" aria-label="Mobile navigation">
+      <span class="technical-label">Navigation</span>
+      {items.map((item, index) => (
+        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined} data-menu-link>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          {item.label}
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+      <a class="button button--primary mobile-contact" href="/contact/">Discuss a project</a>
+    </nav>
+  </div>
+</header>

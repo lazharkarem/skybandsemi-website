@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import CtaBand from '../components/CtaBand.astro'
+
+const phases = [
+  { label: 'Define', steps: 'Steps 01–02' },
+  { label: 'Design', steps: 'Steps 03–07' },
+  { label: 'Realise', steps: 'Steps 08–10' },
+  { label: 'Validate', steps: 'Step 11' },
+]
+
+const steps = [
+  {
+    number: '01',
+    phase: 'Define',
+    title: 'System Requirements',
+    text: 'Capture and formalise the complete RF system requirements — frequency, power, gain, noise, linearity, environment and interface constraints.',
+  },
+  {
+    number: '02',
+    phase: 'Define',
+    title: 'Architecture Definition',
+    text: 'Define the system signal chain, technology platform, and architectural partitioning. Evaluate feasibility and key risk items.',
+  },
+  {
+    number: '03',
+    phase: 'Design',
+    title: 'Circuit Design',
+    text: 'Transistor-level schematic design and hand analysis. Initial sizing for gain, noise, linearity and power consumption targets.',
+  },
+  {
+    number: '04',
+    phase: 'Design',
+    title: 'Circuit Simulation',
+    text: 'Comprehensive simulation across process, voltage and temperature (PVT) corners. Large-signal, small-signal and noise characterization.',
+  },
+  {
+    number: '05',
+    phase: 'Design',
+    title: 'EM Simulation',
+    text: '3D electromagnetic modelling of critical passives, interconnects and substrate structures to capture parasitic effects.',
+  },
+  {
+    number: '06',
+    phase: 'Design',
+    title: 'Layout',
+    text: 'Full custom physical layout of the circuit. Optimized for performance, manufacturability and design rule compliance.',
+  },
+  {
+    number: '07',
+    phase: 'Design',
+    title: 'DRC / LVS Verification',
+    text: 'Design Rule Check and Layout vs. Schematic sign-off. Post-layout parasitic extraction and re-simulation.',
+  },
+  {
+    number: '08',
+    phase: 'Realise',
+    title: 'Tape-Out',
+    text: 'Preparation and submission of final GDS-II layout data to the foundry for silicon manufacture.',
+  },
+  {
+    number: '09',
+    phase: 'Realise',
+    title: 'Packaging',
+    text: 'Die assembly into the target package — QFN, flip-chip, bare-die, or module depending on application requirements.',
+  },
+  {
+    number: '10',
+    phase: 'Realise',
+    title: 'PCB Evaluation Board',
+    text: 'Design of a dedicated test board for RF measurement — matched, accessible, and optimised for characterisation.',
+  },
+  {
+    number: '11',
+    phase: 'Validate',
+    title: 'Measurement & Validation',
+    text: 'Full RF characterisation — S-parameters, noise, linearity, power, and system-level performance against specification.',
+  },
+]
+---
+
+<BaseLayout
+  title="Development Process — SkyBand Semiconductors"
+  description="SkyBand's 11-step RF development process from system requirements to final silicon validation."
+>
+  <PageHero
+    eyebrow="Full project development"
+    title="From first specification to final validated silicon."
+    lead="One continuous engineering path — from requirements through tape-out and hardware, carried by a single team."
+    current="Development"
+  />
+
+  <section class="section" aria-labelledby="process-title">
+    <div class="container process-layout">
+      <aside class="process-aside" data-reveal>
+        <span class="eyebrow">Process overview</span>
+        <h2 id="process-title">11 steps across 4 phases.</h2>
+        <p>Complete development ownership means every design decision made in phase one is preserved and carried through to the measurement bench in phase four.</p>
+        <ul class="phase-summary">
+          {phases.map((phase) => (
+            <li class="phase-summary-item">
+              <strong>{phase.label}</strong>
+              <span>{phase.steps}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="process-note">
+          <strong>One team, end to end</strong>
+          <p>No knowledge gaps. No costly handoffs. A single engineering partner accountable for every deliverable.</p>
+        </div>
+      </aside>
+
+      <div class="process-timeline" data-process-timeline data-reveal>
+        <span class="process-progress" data-process-progress aria-hidden="true"></span>
+        <ol>
+          {steps.map((step) => (
+            <li class="process-step">
+              <div class="process-step-marker">
+                <span class="process-step-dot">{step.number}</span>
+              </div>
+              <div class="process-step-body">
+                <span class="technical-label">{step.phase}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Ready to start a development programme?"
+    text="Tell us where you are and what you need to achieve."
+    label="Discuss your programme"
+  />
+</BaseLayout>

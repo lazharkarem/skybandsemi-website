@@ -1,0 +1,184 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import SectionHeader from '../components/SectionHeader.astro'
+import CtaBand from '../components/CtaBand.astro'
+import Icon from '../components/Icon.astro'
+import WaveTrace from '../components/WaveTrace.astro'
+
+const platforms = [
+  {
+    label: '01 / CMOS RF-SOI',
+    title: 'Silicon-on-Insulator',
+    text: 'Best-in-class RF switch performance. High integration density enables complex front-end solutions in a single die. Cost-effective at volume production.',
+    parameters: [
+      { label: 'Frequency', value: 'DC – 100+ GHz' },
+      { label: 'Strength', value: 'Integration, switches' },
+      { label: 'Applications', value: 'FEM, IoT, consumer' },
+    ],
+    tags: ['RF switches', 'Integration', 'mmWave'],
+    primary: false,
+  },
+  {
+    label: '02 / SiGe BiCMOS',
+    title: 'Silicon Germanium',
+    text: 'Exceptional fT and fmax for mmWave analog and mixed-signal design. Combines high-frequency bipolar transistors with CMOS digital circuitry in one process.',
+    parameters: [
+      { label: 'Frequency', value: 'Up to 300+ GHz' },
+      { label: 'Strength', value: 'Low noise, mmWave' },
+      { label: 'Applications', value: 'Radar, satcom, 5G' },
+    ],
+    tags: ['LNA', 'mmWave', 'Mixed-signal'],
+    primary: true,
+  },
+  {
+    label: '03 / GaN MMIC',
+    title: 'Gallium Nitride',
+    text: 'Wide bandgap semiconductor with high breakdown voltage and superior power density. Ideal for demanding microwave power amplification in radar and defence systems.',
+    parameters: [
+      { label: 'Frequency', value: 'DC – 100 GHz' },
+      { label: 'Strength', value: 'Power density' },
+      { label: 'Applications', value: 'Radar, defence, PA' },
+    ],
+    tags: ['Power PA', 'Radar', 'Defence'],
+    primary: false,
+  },
+] as const
+
+const applications = [
+  {
+    number: '01',
+    title: 'Radar & Sensing',
+    text: 'Transmit/receive front-ends, beamforming and signal chain integration for automotive, industrial and defence radar systems.',
+    icon: 'radar',
+    tags: ['GaN', 'SiGe', 'Beamforming'],
+  },
+  {
+    number: '02',
+    title: 'Satellite Communications',
+    text: 'High-frequency amplification, frequency conversion and front-end integration for Ka, Q and V-band satellite links and terminals.',
+    icon: 'satellite',
+    tags: ['mmWave', 'SiGe', 'Ka-band'],
+  },
+  {
+    number: '03',
+    title: '5G & Advanced Wireless',
+    text: 'Integrated RF solutions for 5G NR mmWave infrastructure, massive MIMO arrays, and next-generation wireless system-on-chip designs.',
+    icon: 'wireless',
+    tags: ['CMOS SOI', '5G NR', '28/39 GHz'],
+  },
+] as const
+---
+
+<BaseLayout
+  title="Technology Platforms — SkyBand Semiconductors"
+  description="CMOS RF-SOI, SiGe BiCMOS and GaN MMIC — technology selection guided by frequency, power and integration."
+>
+  <PageHero
+    eyebrow="Technology platforms"
+    title="The process follows the application."
+    lead="Technology selection is guided by frequency, power density, integration requirements and target markets — not process familiarity."
+    current="Technology"
+  />
+
+  <section class="section section--dark" aria-labelledby="platform-title">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Three platforms"
+        title="Right process, right application."
+        align="center"
+        theme="dark"
+        id="platform-title"
+      />
+      <div class="platform-grid" data-reveal-group>
+        {platforms.map((platform) => (
+          <article class="platform-card platform-card--dark">
+            <WaveTrace />
+            <div class="card-number">
+              <span>{platform.label}</span>
+              {platform.primary && <span class="status">Primary platform</span>}
+            </div>
+            <h3>{platform.title}</h3>
+            <p>{platform.text}</p>
+            <dl class="parameter-list" aria-label={`Key parameters for ${platform.title}`}>
+              {platform.parameters.map((parameter) => (
+                <div class="parameter-row">
+                  <dt><span>{parameter.label}</span></dt>
+                  <dd><strong>{parameter.value}</strong></dd>
+                </div>
+              ))}
+            </dl>
+            <div class="tag-row">
+              {platform.tags.map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="interconnect-split" aria-labelledby="interconnect-title" data-reveal>
+    <div class="interconnect-text">
+      <span class="technical-label">SiGe BiCMOS technology</span>
+      <h2 id="interconnect-title">Metal interconnect layers from transistor to pad.</h2>
+      <p>TEM cross-section visualization of a SiGe BiCMOS RFIC showing eight metal layers — from the active transistors at the substrate to the thick aluminium bond-pad metallisation.</p>
+      <dl class="interconnect-stats">
+        <div>
+          <dt>Metal layers</dt>
+          <dd>8</dd>
+        </div>
+        <div>
+          <dt>Node</dt>
+          <dd>SiGe</dd>
+        </div>
+        <div>
+          <dt>fmax</dt>
+          <dd>300+ GHz</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="interconnect-image">
+      <img
+        src="/images/chip-die.jpg"
+        alt="Semiconductor chip die cross-section showing eight metal interconnect layers"
+        width="1264"
+        height="848"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section class="section section--paper" id="applications" aria-labelledby="applications-title">
+    <div class="container">
+      <SectionHeader
+        eyebrow="Application areas"
+        title="Where our technology is applied."
+        text="RF and mmWave systems that demand reliable performance at the edge of what silicon can achieve."
+        id="applications-title"
+      />
+      <div class="card-grid card-grid--three application-grid" data-reveal-group>
+        {applications.map((application) => (
+          <article class="premium-card">
+            <div class="card-number">
+              <span>{application.number}</span>
+              <Icon name={application.icon} size={29} />
+            </div>
+            <h3>{application.title}</h3>
+            <p>{application.text}</p>
+            <div class="tag-row" style="margin-top: 28px;">
+              {application.tags.map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Need to select a process technology?"
+    text="We can advise on the right PDK for your frequency, power and integration requirements."
+    label="Talk to us"
+    href="/contact/"
+  />
+</BaseLayout>

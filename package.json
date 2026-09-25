@@ -1,16 +1,24 @@
 {
   "name": "skybandsemi-website",
-  "version": "1.0.0",
-  "description": "SkyBand Semiconductors — RF & mmWave Engineering Website",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "SkyBand Semiconductors — RF and mmWave engineering",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "devDependencies": {
-    "vite": "^5.0.0"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "check": "astro check",
+    "preview": "astro preview"
   },
   "dependencies": {
-    "gsap": "^3.12.5"
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "astro": "^7.3.5",
+    "gsap": "^3.15.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3"
   }
 }

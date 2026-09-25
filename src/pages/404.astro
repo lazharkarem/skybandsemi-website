@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<style>
+  .error-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 44%, rgba(20, 149, 139, .16), transparent 34%), var(--ink-950);
+  }
+
+  .error-page::before {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: linear-gradient(rgba(141, 226, 218, .035) 1px, transparent 1px), linear-gradient(90deg, rgba(141, 226, 218, .035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    content: '';
+    mask-image: radial-gradient(circle at center, black, transparent 72%);
+  }
+
+  .error-page::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    width: min(74vw, 720px);
+    aspect-ratio: 1;
+    border: 1px solid rgba(141, 226, 218, .09);
+    border-radius: 50%;
+    content: '';
+    box-shadow: 0 0 0 70px rgba(141, 226, 218, .018), 0 0 0 140px rgba(141, 226, 218, .012);
+    transform: translate(-50%, -50%);
+  }
+
+  .error-content {
+    position: relative;
+    display: grid;
+    max-width: 780px;
+    justify-items: center;
+  }
+
+  .error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  @media (max-width: 520px) {
+    .error-actions {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<BaseLayout
+  title="Page not found — SkyBand Semiconductors"
+  description="The requested page could not be found on the SkyBand Semiconductors website."
+>
+  <meta slot="head" name="robots" content="noindex" />
+  <section class="error-page" aria-labelledby="error-title">
+    <div class="container error-content" data-reveal>
+      <strong>ERROR / 404</strong>
+      <h1 id="error-title">Page not found</h1>
+      <p>The page you requested may have moved, or the address may be incorrect. Return home or contact us for help.</p>
+      <div class="error-actions">
+        <a class="button button--primary" href="/">Return home <span aria-hidden="true">→</span></a>
+        <a class="button button--ghost-light" href="/contact/">Contact us <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

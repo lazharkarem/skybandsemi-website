@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import Icon from '../components/Icon.astro'
+import CtaBand from '../components/CtaBand.astro'
+import WaveTrace from '../components/WaveTrace.astro'
+
+const products = [
+  {
+    number: '01',
+    title: 'Power Amplifier ICs',
+    text: 'Integrated RF power solutions targeting high-efficiency operation across microwave and mmWave frequency bands. GaN MMIC and SiGe BiCMOS process nodes.',
+    icon: 'signal',
+    tags: ['Radar', 'Satellite', '5G mmWave'],
+  },
+  {
+    number: '02',
+    title: 'Beamforming & Control ICs',
+    text: 'Multi-channel phase shifters, attenuators and T/R switch arrays integrated for phased-array antenna and active electronically scanned array (AESA) applications.',
+    icon: 'radar',
+    tags: ['Phased arrays', 'AESA', 'Satcom'],
+  },
+  {
+    number: '03',
+    title: 'RF Front-End Modules',
+    text: 'Integrated building blocks combining LNA, PA, switch and filter functions into a single-chip CMOS RF-SOI solution targeting mmWave front-end applications.',
+    icon: 'products',
+    tags: ['Wireless infra', 'IoT', 'Consumer'],
+  },
+] as const
+---
+
+<BaseLayout
+  title="Products — SkyBand Semiconductors"
+  description="SkyBand Semiconductors RF semiconductor product roadmap — Power Amplifier ICs, Beamforming ICs, RF Front-End Solutions."
+>
+  <PageHero
+    eyebrow="SkyBand products"
+    title="Our technology. Our product roadmap."
+    lead="Proprietary RF semiconductor components in development. Register to receive specifications and availability updates."
+    current="Products"
+  />
+
+  <section class="product-feature" aria-labelledby="product-feature-title">
+    <img
+      src="/images/qfn-package.jpg"
+      alt="RF semiconductor QFN chip package on a dark surface"
+      width="1264"
+      height="848"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="feature-overlay" data-reveal>
+      <span class="technical-label">SkyBand in development</span>
+      <h2 id="product-feature-title">Silicon designed for performance. Packaged for production.</h2>
+      <p>Proprietary SkyBand RF semiconductor ICs in development across three product families.</p>
+      <div>
+        <a class="button button--primary" href="/contact/">Register for updates <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--dark" aria-labelledby="product-families-title">
+    <div class="container">
+      <div class="section-heading section-heading--split section-heading--dark" data-reveal>
+        <div>
+          <span class="eyebrow">Product roadmap</span>
+          <h2 id="product-families-title">Three product families in development.</h2>
+        </div>
+        <p>GaN MMIC and SiGe BiCMOS power amplification, phased-array control, and single-chip CMOS RF-SOI front-ends.</p>
+      </div>
+
+      <div class="card-grid card-grid--three" data-reveal-group>
+        {products.map((product) => (
+          <article class="product-card">
+            <WaveTrace />
+            <div class="product-card-top">
+              <span class="technical-label">{product.number} / Product family</span>
+              <span class="status">In development</span>
+            </div>
+            <div class="card-icon">
+              <Icon name={product.icon} size={22} />
+            </div>
+            <h3>{product.title}</h3>
+            <p>{product.text}</p>
+            <div class="product-card-footer">
+              <span>Target applications</span>
+              <div class="tag-row">
+                {product.tags.map((tag) => <span class="tag">{tag}</span>)}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Register for product updates"
+    text="Be among the first to receive datasheets, evaluation kit availability and ordering information as each product family is released."
+    label="Request updates"
+  />
+</BaseLayout>

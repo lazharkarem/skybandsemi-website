@@ -1,0 +1,15 @@
+{
+  "name": "SkyBand Semiconductors",
+  "short_name": "SkyBand",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#061217",
+  "theme_color": "#061217",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

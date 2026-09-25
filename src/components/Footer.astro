@@ -1,0 +1,45 @@
+---
+import Logo from './Logo.astro'
+
+const year = new Date().getFullYear()
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" aria-label="SkyBand Semiconductors home"><Logo /></a>
+        <p>RF and mmWave integrated circuit engineering, from first specification through validated silicon and hardware.</p>
+        <a class="footer-email" href="mailto:contact@skybandsemi.com">contact@skybandsemi.com <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-title">Services</span>
+        <a href="/capabilities/">Consulting &amp; engineering</a>
+        <a href="/development/">Full project development</a>
+        <a href="/products/">Products</a>
+      </div>
+
+      <div class="footer-column">
+        <span class="footer-title">Expertise</span>
+        <a href="/technology/">Technology platforms</a>
+        <a href="/technology/#applications">Applications</a>
+        <a href="/capabilities/#circuits">Circuit scope</a>
+      </div>
+
+      <div class="footer-column footer-address">
+        <span class="footer-title">Headquarters</span>
+        <address>12 Rue des Moissons<br />14850 Escoville, France</address>
+        <span>Engineering &amp; technical studies</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} SkyBand Semiconductors</span>
+      <div>
+        <a href="/privacy/">Privacy</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>

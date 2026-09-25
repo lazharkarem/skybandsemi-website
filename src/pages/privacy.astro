@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+
+const sections = [
+  { id: 'who-we-are', label: '1. Who we are' },
+  { id: 'data-we-collect', label: '2. Data we collect' },
+  { id: 'how-we-use-your-data', label: '3. How we use your data' },
+  { id: 'data-retention', label: '4. Data retention' },
+  { id: 'your-rights', label: '5. Your rights (GDPR)' },
+  { id: 'security', label: '6. Security' },
+  { id: 'contact', label: '7. Contact' },
+]
+---
+
+<style>
+  .legal-aside nav {
+    margin-top: 24px;
+  }
+
+  .legal-aside ul {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .legal-aside a {
+    color: var(--muted);
+    font-size: .75rem;
+    line-height: 1.5;
+    transition: color .2s ease;
+  }
+
+  .legal-aside a:hover {
+    color: var(--teal-700);
+  }
+
+  .data-table dt {
+    background: var(--paper-deep);
+    font-size: .74rem;
+    font-weight: 700;
+  }
+
+  .data-table dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: .75rem;
+    line-height: 1.65;
+  }
+
+  .rights-grid {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .legal-contact-card {
+    display: grid;
+    margin-top: 18px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+    gap: 8px;
+  }
+
+  .legal-contact-card strong {
+    color: var(--text);
+    font-family: var(--font-display);
+  }
+
+  .legal-contact-card p {
+    color: var(--muted);
+    font-size: .82rem;
+    line-height: 1.7;
+  }
+</style>
+
+<BaseLayout
+  title="Privacy Policy — SkyBand Semiconductors"
+  description="Privacy policy and GDPR data protection information for SkyBand Semiconductors."
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Privacy Policy"
+    lead="How SkyBand Semiconductors collects, uses, and protects your personal data."
+    current="Privacy Policy"
+  />
+
+  <section class="section section--white" aria-label="Privacy policy content">
+    <div class="container legal-layout">
+      <aside class="legal-aside" data-reveal>
+        <span class="technical-label">Policy details</span>
+        <p><strong>Last Updated:</strong> September 2026 &nbsp;·&nbsp; SkyBand Semiconductors, 12 Rue des Moissons, 14850 Escoville, France</p>
+        <nav aria-label="Privacy policy sections">
+          <ul>
+            {sections.map((section) => (
+              <li><a href={`#${section.id}`}>{section.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
+
+      <article class="legal-content" data-reveal>
+        <section class="legal-section" id="who-we-are" aria-labelledby="who-we-are-title">
+          <h2 id="who-we-are-title">1. Who we are</h2>
+          <p>SkyBand Semiconductors (the "Company") is the data controller responsible for your personal data. We are an RF and mmWave integrated circuit engineering company headquartered at 12 Rue des Moissons, 14850 Escoville, France. You can reach us at <a href="mailto:contact@skybandsemi.com">contact@skybandsemi.com</a> for any data-related queries.</p>
+        </section>
+
+        <section class="legal-section" id="data-we-collect" aria-labelledby="data-we-collect-title">
+          <h2 id="data-we-collect-title">2. Data we collect</h2>
+          <p>When you submit an enquiry through our contact form, we collect:</p>
+          <dl class="data-table">
+            <div class="data-row">
+              <dt>Identity Data</dt>
+              <dd>First name, last name, or similar identifier you provide in the form.</dd>
+            </div>
+            <div class="data-row">
+              <dt>Contact Data</dt>
+              <dd>Email address provided in the enquiry form.</dd>
+            </div>
+            <div class="data-row">
+              <dt>Professional Data</dt>
+              <dd>Company name, project type, frequency range, and project description you submit.</dd>
+            </div>
+            <div class="data-row">
+              <dt>Technical Data</dt>
+              <dd>IP address, browser type, and standard server log data collected automatically on site visits.</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="legal-section" id="how-we-use-your-data" aria-labelledby="how-we-use-your-data-title">
+          <h2 id="how-we-use-your-data-title">3. How we use your data</h2>
+          <p>We use your personal data solely to:</p>
+          <ul>
+            <li>Respond to your direct enquiry and provide the information or proposal you requested.</li>
+            <li>Evaluate your project requirements and determine whether we can assist.</li>
+            <li>Comply with any applicable legal or regulatory obligation.</li>
+          </ul>
+          <p>We do not use your data for marketing without your explicit prior consent. We do not sell or share your data with third parties for commercial purposes.</p>
+        </section>
+
+        <section class="legal-section" id="data-retention" aria-labelledby="data-retention-title">
+          <h2 id="data-retention-title">4. Data retention</h2>
+          <p>We retain enquiry data for a period of 36 months from the date of receipt, after which it is securely deleted, unless a longer retention period is required by law or by an ongoing business relationship.</p>
+        </section>
+
+        <section class="legal-section" id="your-rights" aria-labelledby="your-rights-title">
+          <h2 id="your-rights-title">5. Your rights (GDPR)</h2>
+          <p>Under the General Data Protection Regulation (GDPR), you have the following rights:</p>
+          <ul class="rights-grid">
+            <li class="right-item">Right to <strong>access</strong> your personal data</li>
+            <li class="right-item">Right to <strong>rectification</strong> of inaccurate data</li>
+            <li class="right-item">Right to <strong>erasure</strong> ("right to be forgotten")</li>
+            <li class="right-item">Right to <strong>restrict</strong> processing</li>
+            <li class="right-item">Right to <strong>data portability</strong></li>
+            <li class="right-item">Right to <strong>object</strong> to processing</li>
+          </ul>
+          <p>To exercise any of these rights, please contact us at <a href="mailto:contact@skybandsemi.com">contact@skybandsemi.com</a>. We will respond within 30 days.</p>
+        </section>
+
+        <section class="legal-section" id="security" aria-labelledby="security-title">
+          <h2 id="security-title">6. Security</h2>
+          <p>We implement appropriate technical and organisational security measures to protect your personal data against unauthorised access, alteration, disclosure, or destruction. Our website uses HTTPS encryption for all data transfers.</p>
+        </section>
+
+        <section class="legal-section" id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">7. Contact</h2>
+          <p>For questions about this policy or to exercise your rights:</p>
+          <address class="legal-contact-card">
+            <strong>SkyBand Semiconductors</strong>
+            <p>12 Rue des Moissons, 14850 Escoville, France<br />Email: <a href="mailto:contact@skybandsemi.com">contact@skybandsemi.com</a></p>
+          </address>
+        </section>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

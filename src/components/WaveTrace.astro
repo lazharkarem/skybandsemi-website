@@ -1,0 +1,14 @@
+---
+interface Props {
+  variant?: 'board' | 'card'
+}
+
+const { variant = 'card' } = Astro.props
+
+const wave = 'M0 20 C8 20 12 6 20 6 S32 20 40 20 S52 6 60 6 S72 20 80 20 S92 6 100 6 S112 20 120 20 S132 6 140 6 S152 20 160 20 S172 6 180 6 S192 20 200 20 S212 6 220 6 S232 20 240 20'
+---
+
+<svg class:list={['wave-trace', `wave-trace--${variant}`]} viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path class="wave-trace-base" d={wave}></path>
+  <path class="wave-trace-signal" d={wave} pathLength="100"></path>
+</svg>

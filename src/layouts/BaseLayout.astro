@@ -1,0 +1,75 @@
+---
+import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: string
+  bodyClass?: string
+}
+
+const {
+  title,
+  description,
+  image = '/images/hero-wafer.jpg',
+  bodyClass = '',
+} = Astro.props
+
+const site = Astro.site ?? new URL('https://skybandsemi.com')
+const canonical = new URL(Astro.url.pathname, site)
+const socialImage = new URL(image, site)
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SkyBand Semiconductors',
+  url: site.toString(),
+  logo: new URL('/favicon.svg', site).toString(),
+  email: 'contact@skybandsemi.com',
+  description: 'Specialist RF and mmWave consulting, integrated circuit development, and semiconductor products.',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '12 Rue des Moissons',
+    postalCode: '14850',
+    addressLocality: 'Escoville',
+    addressCountry: 'FR',
+  },
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#061217" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SkyBand Semiconductors" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Navigation />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <script src="../scripts/site.ts"></script>
+    <script src="../scripts/circuit-field.ts"></script>
+  </body>
+</html>

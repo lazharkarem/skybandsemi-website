@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import Icon from '../components/Icon.astro'
+import CtaBand from '../components/CtaBand.astro'
+---
+
+<BaseLayout
+  title="About — SkyBand Semiconductors"
+  description="SkyBand Semiconductors is a specialist RF and mmWave design company focused on integrated circuit development."
+  image="/images/satellite.jpg"
+>
+  <PageHero
+    eyebrow="About SkyBand"
+    title="RF engineering connected to the complete product."
+    lead="We work at the convergence of architecture, circuit performance and physical implementation."
+    current="About"
+  />
+
+  <section class="section" aria-labelledby="mission-title">
+    <div class="container about-intro">
+      <div data-reveal>
+        <span class="eyebrow">Our mission</span>
+        <h2 class="h2" id="mission-title" style="margin: 20px 0 28px;">Specialist expertise, applied where it creates most value.</h2>
+        <p class="about-statement">SkyBand Semiconductors is an RF and mmWave design company focused on integrated circuit development and high-frequency systems.</p>
+        <div class="about-copy">
+          <p>We work at the point where architecture, circuit performance and physical implementation meet. Our role ranges from solving a specific design challenge to carrying a complete programme through silicon and hardware validation.</p>
+          <p>Every engagement begins with a clear understanding of what you need to achieve — at system level, at circuit level, and at the measurement bench — and we remain connected to that goal throughout.</p>
+        </div>
+        <div class="tag-row" style="margin-top: 28px;">
+          <span class="tag">Specialist expertise</span>
+          <span class="tag">End-to-end development</span>
+          <span class="tag">System-level thinking</span>
+          <span class="tag">RFIC · MMIC</span>
+          <span class="tag">mmWave</span>
+        </div>
+      </div>
+
+      <div class="about-side" data-reveal-group>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong data-count="11">11</strong>
+            <span>11-step development process</span>
+          </div>
+          <div class="about-stat about-stat--dark">
+            <strong data-count="3">3</strong>
+            <span>Technology platforms</span>
+          </div>
+          <div class="about-stat about-stat--dark">
+            <strong>GHz+</strong>
+            <span>mmWave expertise</span>
+          </div>
+          <div class="about-stat">
+            <strong>RF→Si</strong>
+            <span>To silicon validation</span>
+          </div>
+        </div>
+
+        <div class="principle-list">
+          <article class="principle-item">
+            <span aria-hidden="true"><Icon name="consulting" size={18} /></span>
+            <div>
+              <h3>Specialist expertise</h3>
+              <p>Deep RF capability applied at the point of maximum impact in your programme.</p>
+            </div>
+          </article>
+          <article class="principle-item">
+            <span aria-hidden="true"><Icon name="development" size={18} /></span>
+            <div>
+              <h3>Connected development</h3>
+              <p>Architecture decisions are preserved and carried through circuit, layout and validation phases.</p>
+            </div>
+          </article>
+          <article class="principle-item">
+            <span aria-hidden="true"><Icon name="signal" size={18} /></span>
+            <div>
+              <h3>System-level thinking</h3>
+              <p>Circuit performance is always evaluated in context of the complete system, not in isolation.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="satellite-feature" aria-labelledby="applications-title">
+    <img src="/images/satellite.jpg" alt="Communications satellite transmitting mmWave signals to Earth" width="1264" height="848" loading="lazy" decoding="async" />
+    <span class="link-arcs" aria-hidden="true"><i></i><i></i><i></i></span>
+    <div class="satellite-overlay">
+      <span class="technical-label">Where our technology goes</span>
+      <h2 id="applications-title">RF circuits in space.<br />Satellites. Radar. Wireless.</h2>
+      <p>From GaN power amplifiers in ground terminals to SiGe LNAs in Ka-band satellite receivers — engineered for reliability at the edge of the atmosphere.</p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Work with SkyBand"
+    text="Describe your project and we will explain how we can help."
+    label="Get in touch"
+    href="/contact/"
+  />
+</BaseLayout>

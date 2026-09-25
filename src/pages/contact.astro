@@ -1,0 +1,317 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PageHero from '../components/PageHero.astro'
+import Icon from '../components/Icon.astro'
+
+const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID?.trim()
+const contactEndpoint = formspreeId
+  ? `https://formspree.io/f/${encodeURIComponent(formspreeId)}`
+  : undefined
+---
+
+<BaseLayout
+  title="Contact — SkyBand Semiconductors"
+  description="Discuss your RF or mmWave project with SkyBand Semiconductors."
+>
+  <PageHero
+    eyebrow="Start a conversation"
+    title="Have an RF or mmWave engineering challenge?"
+    lead="Tell us where you are in the development cycle and what you need to achieve. We respond within one business day."
+    current="Contact"
+  />
+
+  <section class="section" aria-labelledby="project-enquiry-title">
+    <div class="container">
+      <div class="contact-layout" data-reveal>
+        <aside class="contact-aside" aria-labelledby="contact-promise-title">
+          <span class="eyebrow">Get in touch</span>
+          <h2 id="contact-promise-title">Reviewed by a senior RF engineer.</h2>
+          <p>Every enquiry is read by someone who understands circuit design, not a sales team. We will respond with a clear proposal for how we can help.</p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="contact-detail-icon"><Icon name="mail" size={18} /></span>
+              <div>
+                <span>Email</span>
+                <a href="mailto:contact@skybandsemi.com">contact@skybandsemi.com</a>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon"><Icon name="clock" size={18} /></span>
+              <div>
+                <span>Response time</span>
+                <p>Within 1 business day</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon"><Icon name="pin" size={18} /></span>
+              <div>
+                <span>Headquarters</span>
+                <address>12 Rue des Moissons<br />14850 Escoville, France</address>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <span class="contact-detail-icon"><Icon name="signal" size={18} /></span>
+              <div>
+                <span>Expertise</span>
+                <p>RFIC · MMIC · mmWave · Front-end</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="form-panel">
+          <h2 id="project-enquiry-title">Project enquiry</h2>
+          <form
+            data-contact-form
+            data-endpoint={contactEndpoint}
+            action={contactEndpoint ?? 'mailto:contact@skybandsemi.com'}
+            method="post"
+            enctype={contactEndpoint ? undefined : 'text/plain'}
+            aria-labelledby="project-enquiry-title"
+            aria-busy="false"
+          >
+            <p
+              class="form-status"
+              data-form-status
+              role="status"
+              aria-live="polite"
+              aria-atomic="true"
+            ></p>
+
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="f-name">Name <span aria-hidden="true">*</span></label>
+                <input
+                  id="f-name"
+                  name="name"
+                  type="text"
+                  placeholder="Jane Smith"
+                  autocomplete="name"
+                  aria-describedby="name-error"
+                  aria-invalid="false"
+                  required
+                />
+                <span
+                  class="field-error"
+                  id="name-error"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></span>
+              </div>
+
+              <div class="form-field">
+                <label for="f-company">Company</label>
+                <input
+                  id="f-company"
+                  name="company"
+                  type="text"
+                  placeholder="Acme RF Systems"
+                  autocomplete="organization"
+                />
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="f-email">Email <span aria-hidden="true">*</span></label>
+                <input
+                  id="f-email"
+                  name="email"
+                  type="email"
+                  placeholder="jane@example.com"
+                  autocomplete="email"
+                  aria-describedby="email-error"
+                  aria-invalid="false"
+                  required
+                />
+                <span
+                  class="field-error"
+                  id="email-error"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></span>
+              </div>
+
+              <div class="form-field">
+                <label for="f-type">Project type <span aria-hidden="true">*</span></label>
+                <select
+                  id="f-type"
+                  name="project_type"
+                  aria-describedby="type-error"
+                  aria-invalid="false"
+                  required
+                >
+                  <option value="" disabled selected>Select…</option>
+                  <option>Consulting &amp; Engineering</option>
+                  <option>Full Project Development</option>
+                  <option>Product / Roadmap Enquiry</option>
+                  <option>Other</option>
+                </select>
+                <span
+                  class="field-error"
+                  id="type-error"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></span>
+              </div>
+
+              <div class="form-field">
+                <label for="f-freq">Frequency range</label>
+                <select id="f-freq" name="frequency">
+                  <option value="" disabled selected>Select…</option>
+                  <option>Sub-6 GHz</option>
+                  <option>6 – 30 GHz</option>
+                  <option>30 – 100 GHz (mmWave)</option>
+                  <option>Above 100 GHz</option>
+                  <option>Not yet defined</option>
+                </select>
+              </div>
+
+              <div class="form-field form-field--full">
+                <label for="f-message">Project description <span aria-hidden="true">*</span></label>
+                <textarea
+                  id="f-message"
+                  name="message"
+                  rows="5"
+                  placeholder="Briefly describe your project goals, current development stage, and what support you need…"
+                  aria-describedby="message-error"
+                  aria-invalid="false"
+                  required
+                ></textarea>
+                <span
+                  class="field-error"
+                  id="message-error"
+                  aria-live="polite"
+                  aria-atomic="true"
+                ></span>
+              </div>
+            </div>
+
+            <div class="checkbox-field" data-privacy-wrapper>
+              <input
+                id="f-privacy"
+                name="privacy"
+                type="checkbox"
+                aria-describedby="privacy-error"
+                aria-invalid="false"
+                required
+              />
+              <label for="f-privacy">
+                I agree that SkyBand Semiconductors may use my details to respond to this enquiry in accordance with its <a href="/privacy/">Privacy Policy</a>.
+              </label>
+              <span
+                class="field-error"
+                id="privacy-error"
+                data-privacy-error
+                aria-live="polite"
+                aria-atomic="true"
+              ></span>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button--primary" type="submit">
+                <span data-button-text>Send enquiry</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--compact" aria-labelledby="office-location-title">
+    <div class="container">
+      <div class="office-card" data-reveal>
+        <div>
+          <span class="technical-label">Headquarters</span>
+          <h2 id="office-location-title">Office Location</h2>
+          <address>12 Rue des Moissons, 14850 Escoville, France</address>
+        </div>
+        <a
+          class="button button--outline"
+          href="https://maps.google.com/?q=12+Rue+des+Moissons+14850+Escoville"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in Google Maps
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="map-frame">
+        <iframe
+          title="SkyBand Semiconductors office location map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2609.11!2d-0.22295!3d49.19114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480a672da5f9d153%3A0x6b8014e7a7cb1b12!2s12%20Rue%20des%20Moissons%2C%2014850%20Escoville%2C%20France!5e0!3m2!1sen!2sfr!4v1716301234567"
+          width="100%"
+          height="420"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import '../scripts/contact'
+</script>
+
+<style>
+  .contact-aside .eyebrow {
+    border-color: rgba(141, 226, 218, .24);
+    background: rgba(141, 226, 218, .06);
+    color: var(--teal-300);
+  }
+
+  .contact-detail address {
+    color: rgba(255, 255, 255, .7);
+    font-size: .78rem;
+    line-height: 1.65;
+  }
+
+  .form-field label span {
+    color: var(--teal-600);
+  }
+
+  .checkbox-field .field-error {
+    margin-top: -4px;
+    grid-column: 2;
+  }
+
+  .checkbox-field.has-error input {
+    outline: 2px solid rgba(180, 71, 58, .45);
+    outline-offset: 2px;
+  }
+
+  .office-card .technical-label {
+    margin-bottom: 12px;
+  }
+
+  .office-card address {
+    color: var(--muted);
+    font-size: .86rem;
+  }
+
+  .map-frame {
+    overflow: hidden;
+    margin-top: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper-deep);
+  }
+
+  .map-frame iframe {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: 0;
+    filter: grayscale(85%) contrast(1.05);
+  }
+
+  @media (max-width: 720px) {
+    .map-frame iframe {
+      height: 340px;
+    }
+  }
+</style>

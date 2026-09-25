@@ -1,0 +1,26 @@
+---
+interface Props {
+  name: 'consulting' | 'development' | 'products' | 'radar' | 'satellite' | 'wireless' | 'mail' | 'clock' | 'pin' | 'signal' | 'shield' | 'lab'
+  size?: number
+  strokeWidth?: number
+}
+
+const { name, size = 28, strokeWidth = 1.5 } = Astro.props as Props
+
+const icons: Record<Props['name'], string> = {
+  consulting: '<circle cx="16" cy="16" r="10"></circle><path d="M16 6v4M16 22v4M6 16h4M22 16h4M9 9l3 3M20 20l3 3M23 9l-3 3M12 20l-3 3"></path>',
+  development: '<path d="M7 22h20M9 22V9h14v13M12 9V6h8v3M12 14h3M19 14h1M12 18h3"></path>',
+  products: '<rect x="7" y="7" width="18" height="18" rx="2"></rect><path d="M11 11h10M11 15h7M11 19h9M3 11v8M29 11v8"></path>',
+  radar: '<circle cx="16" cy="16" r="2" fill="currentColor" stroke="none"></circle><path d="M16 9a7 7 0 0 1 7 7M16 5a11 11 0 0 1 11 11M16 23a7 7 0 0 1-7-7M16 27a11 11 0 0 1-11-11"></path>',
+  satellite: '<path d="M7 24c7 2 14-5 12-14L7 24Z"></path><path d="m19 11 7-7M11 25l-3 7M5 32h11M22 8c3 1 5 3 6 6M25 4c5 1 8 4 9 9"></path>',
+  wireless: '<path d="M16 23v8M13 31h6M16 23l-3-6h6l-3 6Z"></path><path d="M10 14a8 8 0 0 1 12 0M7 10a13 13 0 0 1 18 0M4 6a18 18 0 0 1 24 0"></path>',
+  mail: '<rect x="5" y="8" width="22" height="16" rx="2"></rect><path d="m7 10 9 7 9-7"></path>',
+  clock: '<circle cx="16" cy="16" r="11"></circle><path d="M16 9v7l5 3"></path>',
+  pin: '<path d="M23 13c0 5-7 11-7 11S9 18 9 13a7 7 0 1 1 14 0Z"></path><circle cx="16" cy="13" r="2.2"></circle>',
+  signal: '<path d="M5 20h5l3-10 4 16 3-8h5"></path>',
+  shield: '<path d="M16 4 25 8v6c0 6-4 10-9 12-5-2-9-6-9-12V8l9-4Z"></path><path d="m12 16 3 3 6-7"></path>',
+  lab: '<path d="M11 5h10M13 5v7L7 24a2 2 0 0 0 2 3h18a2 2 0 0 0 2-3L23 12V5"></path><path d="M10 21h16"></path>',
+}
+---
+
+<svg width={size} height={size} viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width={strokeWidth} stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[name]}></svg>
