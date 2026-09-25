@@ -458,10 +458,10 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 .data-pulse-x {
   position: absolute; height: 1px; width: 80px;
   background: linear-gradient(90deg, transparent, var(--teal-400), transparent);
-  animation: data-flow-x 4s linear infinite; pointer-events: none;
+  animation: data-flow-x 15s linear infinite; pointer-events: none;
 }
 .data-pulse-y {
   position: absolute; width: 1px; height: 80px;
   background: linear-gradient(180deg, transparent, var(--teal-400), transparent);
-  animation: data-flow-y 5s linear infinite; pointer-events: none;
+  animation: data-flow-y 18s linear infinite; pointer-events: none;
 }
