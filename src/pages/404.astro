@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+const base = import.meta.env.BASE_URL
 ---
 
 <style>
@@ -68,7 +69,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <p>The page you requested may have moved, or the address may be incorrect. Return home or contact us for help.</p>
       <div class="error-actions">
         <a class="button button--primary" href="/">Return home <span aria-hidden="true">→</span></a>
-        <a class="button button--ghost-light" href="/contact/">Contact us <span aria-hidden="true">↗</span></a>
+        <a class="button button--ghost-light" href={`${base}contact/`}>Contact us <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

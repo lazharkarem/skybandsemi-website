@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro'
 
+const base = import.meta.env.BASE_URL
 const year = new Date().getFullYear()
 ---
 
@@ -8,23 +9,23 @@ const year = new Date().getFullYear()
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" aria-label="SkyBand Semiconductors home"><Logo /></a>
+        <a href={base} aria-label="SkyBand Semiconductors home"><Logo /></a>
         <p>RF and mmWave integrated circuit engineering, from first specification through validated silicon and hardware.</p>
         <a class="footer-email" href="mailto:contact@skybandsemi.com">contact@skybandsemi.com <span aria-hidden="true">↗</span></a>
       </div>
 
       <div class="footer-column">
         <span class="footer-title">Services</span>
-        <a href="/capabilities/">Consulting &amp; engineering</a>
-        <a href="/development/">Full project development</a>
-        <a href="/products/">Products</a>
+        <a href={`${base}capabilities/`}>Consulting &amp; engineering</a>
+        <a href={`${base}development/`}>Full project development</a>
+        <a href={`${base}products/`}>Products</a>
       </div>
 
       <div class="footer-column">
         <span class="footer-title">Expertise</span>
-        <a href="/technology/">Technology platforms</a>
-        <a href="/technology/#applications">Applications</a>
-        <a href="/capabilities/#circuits">Circuit scope</a>
+        <a href={`${base}technology/`}>Technology platforms</a>
+        <a href={`${base}technology/#applications`}>Applications</a>
+        <a href={`${base}capabilities/#circuits`}>Circuit scope</a>
       </div>
 
       <div class="footer-column footer-address">
@@ -37,8 +38,8 @@ const year = new Date().getFullYear()
     <div class="footer-bottom">
       <span>© {year} SkyBand Semiconductors</span>
       <div>
-        <a href="/privacy/">Privacy</a>
-        <a href="/contact/">Contact</a>
+        <a href={`${base}privacy/`}>Privacy</a>
+        <a href={`${base}contact/`}>Contact</a>
       </div>
     </div>
   </div>

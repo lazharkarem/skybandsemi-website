@@ -7,6 +7,7 @@ const formspreeId = import.meta.env.PUBLIC_FORMSPREE_ID?.trim()
 const contactEndpoint = formspreeId
   ? `https://formspree.io/f/${encodeURIComponent(formspreeId)}`
   : undefined
+const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
@@ -196,7 +197,7 @@ const contactEndpoint = formspreeId
                 required
               />
               <label for="f-privacy">
-                I agree that SkyBand Semiconductors may use my details to respond to this enquiry in accordance with its <a href="/privacy/">Privacy Policy</a>.
+                I agree that SkyBand Semiconductors may use my details to respond to this enquiry in accordance with its <a href={`${base}privacy/`}>Privacy Policy</a>.
               </label>
               <span
                 class="field-error"

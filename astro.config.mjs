@@ -2,7 +2,8 @@ import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
-  site: 'https://skybandsemi.com',
+  site: 'https://lazharkarem.github.io',
+  base: '/skybandsemi-website',
   output: 'static',
   trailingSlash: 'always',
   integrations: [sitemap()],

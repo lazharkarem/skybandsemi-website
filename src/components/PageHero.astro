@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { eyebrow, title, lead, current, tone = 'dark' } = Astro.props
+const base = import.meta.env.BASE_URL
 ---
 
 <section class:list={['page-hero', `page-hero--${tone}`]}>
@@ -17,7 +18,7 @@ const { eyebrow, title, lead, current, tone = 'dark' } = Astro.props
   <CircuitField />
   <div class="container page-hero-inner">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Home</a>
+      <a href={base}>Home</a>
       <span aria-hidden="true">/</span>
       <span aria-current="page">{current}</span>
     </nav>

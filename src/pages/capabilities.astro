@@ -63,6 +63,7 @@ const circuitGroups = [
     ],
   },
 ]
+const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
@@ -119,7 +120,7 @@ const circuitGroups = [
 
   <section class="validation-feature" aria-labelledby="validation-title">
     <img
-      src="/images/lab-vna.jpg"
+      src={`${base}images/lab-vna.jpg`}
       alt="RF measurement laboratory with vector network analyzer showing S-parameters"
       width="1264"
       height="848"
@@ -164,6 +165,6 @@ const circuitGroups = [
     title="Ready to discuss a design challenge?"
     text="Tell us the frequency range, target specs and system context."
     label="Start the conversation"
-    href="/contact/"
+    href={`${base}contact/`}
   />
 </BaseLayout>

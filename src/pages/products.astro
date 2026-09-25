@@ -28,6 +28,7 @@ const products = [
     tags: ['Wireless infra', 'IoT', 'Consumer'],
   },
 ] as const
+const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
@@ -43,7 +44,7 @@ const products = [
 
   <section class="product-feature" aria-labelledby="product-feature-title">
     <img
-      src="/images/qfn-package.jpg"
+      src={`${base}images/qfn-package.jpg`}
       alt="RF semiconductor QFN chip package on a dark surface"
       width="1264"
       height="848"
@@ -55,7 +56,7 @@ const products = [
       <h2 id="product-feature-title">Silicon designed for performance. Packaged for production.</h2>
       <p>Proprietary SkyBand RF semiconductor ICs in development across three product families.</p>
       <div>
-        <a class="button button--primary" href="/contact/">Register for updates <span aria-hidden="true">↗</span></a>
+        <a class="button button--primary" href={`${base}contact/`}>Register for updates <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

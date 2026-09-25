@@ -68,6 +68,7 @@ const applications = [
     tags: ['CMOS SOI', '5G NR', '28/39 GHz'],
   },
 ] as const
+const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
@@ -139,7 +140,7 @@ const applications = [
     </div>
     <div class="interconnect-image">
       <img
-        src="/images/chip-die.jpg"
+        src={`${base}images/chip-die.jpg`}
         alt="Semiconductor chip die cross-section showing eight metal interconnect layers"
         width="1264"
         height="848"
@@ -179,6 +180,6 @@ const applications = [
     title="Need to select a process technology?"
     text="We can advise on the right PDK for your frequency, power and integration requirements."
     label="Talk to us"
-    href="/contact/"
+    href={`${base}contact/`}
   />
 </BaseLayout>

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import PageHero from '../components/PageHero.astro'
 import Icon from '../components/Icon.astro'
 import CtaBand from '../components/CtaBand.astro'
+const base = import.meta.env.BASE_URL
 ---
 
 <BaseLayout
@@ -84,7 +85,7 @@ import CtaBand from '../components/CtaBand.astro'
   </section>
 
   <section class="satellite-feature" aria-labelledby="applications-title">
-    <img src="/images/satellite.jpg" alt="Communications satellite transmitting mmWave signals to Earth" width="1264" height="848" loading="lazy" decoding="async" />
+    <img src={`${base}images/satellite.jpg`} alt="Communications satellite transmitting mmWave signals to Earth" width="1264" height="848" loading="lazy" decoding="async" />
     <span class="link-arcs" aria-hidden="true"><i></i><i></i><i></i></span>
     <div class="satellite-overlay">
       <span class="technical-label">Where our technology goes</span>
@@ -97,6 +98,6 @@ import CtaBand from '../components/CtaBand.astro'
     title="Work with SkyBand"
     text="Describe your project and we will explain how we can help."
     label="Get in touch"
-    href="/contact/"
+    href={`${base}contact/`}
   />
 </BaseLayout>
