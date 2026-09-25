@@ -1,7 +1,11 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
 
+// Automatically set base path for GitHub Pages based on the repository name
+const repoName = process.env.GITHUB_REPOSITORY ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/` : '/'
+
 export default defineConfig({
+  base: repoName,
   build: {
     rollupOptions: {
       input: {
