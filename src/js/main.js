@@ -76,32 +76,15 @@ document.addEventListener('click', (e) => {
   }
 })
 
-/* ── BINARY DECODE EFFECT (Semiconductor Vibe) ──────── */
-const decodeText = (element) => {
-  const chars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const original = element.innerText
-  const length = original.length
-  let iterations = 0
-  
-  element.style.opacity = 1
-  const interval = setInterval(() => {
-    element.innerText = original.split('').map((letter, index) => {
-      if(index < iterations) return original[index]
-      return chars[Math.floor(Math.random() * chars.length)]
-    }).join('')
-    
-    if(iterations >= length) clearInterval(interval)
-    iterations += 1/3 // Speed of decode
-  }, 20)
-}
-
+/* ── HEADLINE REVEAL (Semiconductor Vibe) ──────── */
 document.querySelectorAll('.h1, .h2').forEach(el => {
-  el.style.opacity = 0 // Hide initially
-  ScrollTrigger.create({
-    trigger: el,
-    start: 'top 90%',
-    onEnter: () => decodeText(el),
-    once: true
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 90%' },
+    opacity: 0,
+    y: 15,
+    filter: 'blur(10px)',
+    duration: 1.5,
+    ease: 'power3.out'
   })
 })
 
