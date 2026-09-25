@@ -172,15 +172,13 @@ const applications = [
                 <img src={engagement.image} alt="RF integrated circuit board" width="1264" height="848" loading="lazy" decoding="async" />
               </div>
             )}
-            <div>
-              <div class="card-number">
-                <span>{engagement.number}</span>
-                <Icon name={engagement.icon} size={27} />
-              </div>
-              <h3>{engagement.title}</h3>
-              <p>{engagement.text}</p>
-              <a class:list={['text-link', { 'text-link--light': 'image' in engagement }]} href={engagement.href}>{engagement.link} <span aria-hidden="true">→</span></a>
+            <div class="card-number">
+              <span>{engagement.number}</span>
+              <Icon name={engagement.icon} size={27} />
             </div>
+            <h3>{engagement.title}</h3>
+            <p>{engagement.text}</p>
+            <a class:list={['text-link', { 'text-link--light': 'image' in engagement }]} href={engagement.href}>{engagement.link} <span aria-hidden="true">→</span></a>
           </article>
         ))}
       </div>
