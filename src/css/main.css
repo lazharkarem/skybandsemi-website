@@ -424,7 +424,7 @@ button { cursor: pointer; font: inherit; border: none; background: none; }
 .page-transition {
   position: fixed; inset: 0; z-index: 9999;
   background: rgba(5,15,24,0.98); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  pointer-events: none; transform: translateX(0%); /* Cover by default */
+  pointer-events: none; transform: translateX(105%); /* Hidden by default */
   display: flex; align-items: center; justify-content: center; overflow: hidden;
 }
 .page-transition::before {
