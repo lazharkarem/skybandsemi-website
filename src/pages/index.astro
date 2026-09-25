@@ -166,13 +166,13 @@ const applications = [
       />
       <div class="card-grid card-grid--three" data-reveal-group>
         {engagements.map((engagement) => (
-          <article class:list={['premium-card', { 'image-card engagement-card--image': 'image' in engagement, 'premium-card--dark': 'image' in engagement }]}>
+          <article class:list={['premium-card', { 'engagement-card--image': 'image' in engagement, 'premium-card--dark': 'image' in engagement }]}>
             {'image' in engagement && (
               <div class="engagement-card-image">
                 <img src={engagement.image} alt="RF integrated circuit board" width="1264" height="848" loading="lazy" decoding="async" />
               </div>
             )}
-            <div class:list={[{ 'image-card-content': 'image' in engagement }]}>
+            <div>
               <div class="card-number">
                 <span>{engagement.number}</span>
                 <Icon name={engagement.icon} size={27} />
