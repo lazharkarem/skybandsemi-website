@@ -253,14 +253,23 @@ h3 {
 .section--dark .eyebrow,
 .section--ink .technical-label,
 .section--ink .eyebrow,
-.cta-panel .technical-label {
+.cta-panel .technical-label,
+.product-feature .technical-label,
+.product-feature .eyebrow,
+.validation-feature .technical-label,
+.validation-feature .eyebrow,
+.satellite-feature .technical-label,
+.satellite-feature .eyebrow {
   color: var(--teal-300);
 }
 
 .page-hero .eyebrow,
 .section--dark .eyebrow,
 .section--ink .eyebrow,
-.cta-panel .eyebrow {
+.cta-panel .eyebrow,
+.product-feature .eyebrow,
+.validation-feature .eyebrow,
+.satellite-feature .eyebrow {
   border-color: rgba(141, 226, 218, .24);
   background: rgba(141, 226, 218, .06);
 }
@@ -531,6 +540,7 @@ h3 {
 .mobile-panel {
   position: fixed;
   inset: var(--nav-height) 0 0;
+  z-index: 99;
   overflow: auto;
   visibility: hidden;
   background: rgba(3, 11, 14, .99);
@@ -1694,60 +1704,84 @@ h3 {
 .satellite-feature::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(3, 11, 14, .9), rgba(3, 11, 14, .35) 64%, rgba(3, 11, 14, .12));
+  background: linear-gradient(90deg, rgba(3, 11, 14, .95) 0%, rgba(3, 11, 14, .88) min(56vw, 780px), rgba(3, 11, 14, .35) 82%, rgba(3, 11, 14, .12) 100%);
   content: '';
 }
 
 .technology-feature::after,
 .satellite-feature::after {
-  background: linear-gradient(180deg, rgba(3, 11, 14, .18), rgba(3, 11, 14, .9));
+  background: linear-gradient(180deg, rgba(3, 11, 14, .18), rgba(3, 11, 14, .92));
+}
+
+.feature-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: inherit;
+  width: 100%;
+}
+
+.satellite-feature .feature-container {
+  align-items: flex-end;
 }
 
 .feature-overlay {
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: inherit;
-  max-width: 590px;
+  width: 100%;
+  max-width: 600px;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(30px, 6vw, 80px);
+  padding-block: clamp(48px, 6vw, 84px);
+  padding-inline: 0;
 }
 
+.feature-overlay .eyebrow,
 .feature-overlay .technical-label,
+.satellite-overlay .eyebrow,
 .satellite-overlay .technical-label {
-  color: var(--teal-300);
+  margin-bottom: 22px;
 }
 
 .feature-overlay h2 {
-  margin: 18px 0;
-  font-size: clamp(2rem, 4vw, 3.8rem);
+  margin: 0 0 18px;
+  font-size: clamp(2rem, 3.8vw, 3.4rem);
+  line-height: 1.1;
+  letter-spacing: -.03em;
 }
 
 .feature-overlay p {
-  color: rgba(255, 255, 255, .58);
-  line-height: 1.75;
+  margin-bottom: 28px;
+  color: rgba(255, 255, 255, .7);
+  font-size: 1.05rem;
+  line-height: 1.72;
+  max-width: 560px;
 }
 
 .satellite-overlay {
   position: relative;
   z-index: 1;
   display: flex;
-  min-height: 520px;
+  width: 100%;
   max-width: 760px;
   flex-direction: column;
   justify-content: flex-end;
-  padding: clamp(30px, 6vw, 80px);
+  padding-block: clamp(48px, 6vw, 84px);
+  padding-inline: 0;
 }
 
 .satellite-overlay h2 {
-  margin: 18px 0;
+  margin: 0 0 18px;
   font-size: clamp(2.3rem, 5vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -.035em;
 }
 
 .satellite-overlay p {
   max-width: 620px;
-  color: rgba(255, 255, 255, .6);
+  color: rgba(255, 255, 255, .7);
   font-size: 1.05rem;
   line-height: 1.75;
 }
@@ -1973,7 +2007,7 @@ h3 {
 }
 
 .product-feature .feature-overlay {
-  max-width: 620px;
+  max-width: 680px;
 }
 
 .product-card {

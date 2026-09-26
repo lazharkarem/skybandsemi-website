@@ -37,18 +37,18 @@ const isCurrent = (href: string) => currentPath === href || currentPath.startsWi
       <span></span>
     </button>
   </div>
-
-  <div class="mobile-panel" id="mobile-navigation" aria-hidden="true" inert data-mobile-panel>
-    <nav class="container mobile-nav" aria-label="Mobile navigation">
-      <span class="technical-label">Navigation</span>
-      {items.map((item, index) => (
-        <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined} data-menu-link>
-          <span>{String(index + 1).padStart(2, '0')}</span>
-          {item.label}
-          <span aria-hidden="true">↗</span>
-        </a>
-      ))}
-      <a class="button button--primary mobile-contact" href={`${base}contact/`}>Discuss a project</a>
-    </nav>
-  </div>
 </header>
+
+<div class="mobile-panel" id="mobile-navigation" aria-hidden="true" inert data-mobile-panel>
+  <nav class="container mobile-nav" aria-label="Mobile navigation">
+    <span class="technical-label">Navigation</span>
+    {items.map((item, index) => (
+      <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined} data-menu-link>
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        {item.label}
+        <span aria-hidden="true">↗</span>
+      </a>
+    ))}
+    <a class="button button--primary mobile-contact" href={`${base}contact/`}>Discuss a project</a>
+  </nav>
+</div>
