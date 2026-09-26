@@ -75,7 +75,115 @@ const base = import.meta.env.BASE_URL
     title="Specialist capability at circuit and system level."
     lead="We strengthen engineering teams with focused expertise across architecture, simulation, implementation, optimization and validation."
     current="Capabilities"
-  />
+  >
+    <div slot="visual" class="cap-hero-visual" aria-hidden="true">
+      <!-- Animated RF signal chain diagram -->
+      <svg viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg" class="cap-hero-svg">
+        <defs>
+          <linearGradient id="ch-teal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#14958b" stop-opacity="0"/>
+            <stop offset="40%" stop-color="#35b5aa"/>
+            <stop offset="100%" stop-color="#8de2da"/>
+          </linearGradient>
+          <linearGradient id="ch-silver" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c8d8e8"/>
+            <stop offset="100%" stop-color="#7a8fa6"/>
+          </linearGradient>
+          <filter id="ch-glow">
+            <feGaussianBlur stdDeviation="2.5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Background grid -->
+        <pattern id="ch-grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(141,226,218,0.06)" stroke-width="0.5"/>
+        </pattern>
+        <rect width="420" height="280" fill="url(#ch-grid)" rx="8"/>
+        <rect width="420" height="280" fill="none" stroke="rgba(141,226,218,0.12)" stroke-width="1" rx="8"/>
+
+        <!-- Top label -->
+        <text x="16" y="20" font-family="IBM Plex Mono, monospace" font-size="7" fill="rgba(141,226,218,0.5)" letter-spacing="1.5">INTEGRATED RF SIGNAL PATH</text>
+        <circle cx="340" cy="15" r="3.5" fill="#35b5aa" class="signal-status" filter="url(#ch-glow)"/>
+        <text x="350" y="19" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(141,226,218,0.6)" letter-spacing="1">ACTIVE</text>
+
+        <!-- Divider line -->
+        <line x1="16" y1="28" x2="404" y2="28" stroke="rgba(141,226,218,0.1)" stroke-width="0.5"/>
+
+        <!-- Block 1: ANT -->
+        <rect x="16" y="50" width="52" height="32" rx="3" stroke="url(#ch-silver)" stroke-width="1.2" fill="rgba(10,27,34,0.8)"/>
+        <text x="42" y="61" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1">INPUT</text>
+        <text x="42" y="74" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c8d8e8" font-weight="600" text-anchor="middle">ANT</text>
+
+        <!-- Arrow ANT→LNA -->
+        <line x1="68" y1="66" x2="90" y2="66" stroke="url(#ch-teal)" stroke-width="1.5" class="signal-line"/>
+
+        <!-- Block 2: LNA -->
+        <rect x="90" y="50" width="60" height="32" rx="3" stroke="url(#ch-teal)" stroke-width="1.5" fill="rgba(10,27,34,0.9)" filter="url(#ch-glow)"/>
+        <text x="120" y="61" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(141,226,218,0.6)" text-anchor="middle" letter-spacing="1">STAGE 1</text>
+        <text x="120" y="74" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8de2da" font-weight="600" text-anchor="middle">LNA</text>
+
+        <!-- Arrow LNA→FILT -->
+        <line x1="150" y1="66" x2="174" y2="66" stroke="url(#ch-teal)" stroke-width="1.5" class="signal-line"/>
+        <circle cx="162" cy="66" r="2.5" fill="#35b5aa" class="signal-node"/>
+
+        <!-- Block 3: FILT -->
+        <rect x="174" y="50" width="60" height="32" rx="3" stroke="url(#ch-silver)" stroke-width="1.2" fill="rgba(10,27,34,0.8)"/>
+        <text x="204" y="61" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1">STAGE 2</text>
+        <text x="204" y="74" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c8d8e8" font-weight="600" text-anchor="middle">FILT</text>
+
+        <!-- Arrow FILT→MIX -->
+        <line x1="234" y1="66" x2="258" y2="66" stroke="url(#ch-teal)" stroke-width="1.5" class="signal-line"/>
+        <circle cx="246" cy="66" r="2.5" fill="#35b5aa" class="signal-node" style="animation-delay: 0.4s"/>
+
+        <!-- Block 4: MIX -->
+        <rect x="258" y="50" width="60" height="32" rx="3" stroke="url(#ch-silver)" stroke-width="1.2" fill="rgba(10,27,34,0.8)"/>
+        <text x="288" y="61" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(255,255,255,0.4)" text-anchor="middle" letter-spacing="1">STAGE 3</text>
+        <text x="288" y="74" font-family="IBM Plex Mono, monospace" font-size="9" fill="#c8d8e8" font-weight="600" text-anchor="middle">MIX</text>
+
+        <!-- Arrow MIX→PA -->
+        <line x1="318" y1="66" x2="342" y2="66" stroke="url(#ch-teal)" stroke-width="1.5" class="signal-line"/>
+        <circle cx="330" cy="66" r="2.5" fill="#35b5aa" class="signal-node" style="animation-delay: 0.9s"/>
+
+        <!-- Block 5: PA -->
+        <rect x="342" y="50" width="62" height="32" rx="3" stroke="url(#ch-teal)" stroke-width="1.5" fill="rgba(10,27,34,0.9)" filter="url(#ch-glow)"/>
+        <text x="373" y="61" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(141,226,218,0.6)" text-anchor="middle" letter-spacing="1">OUTPUT</text>
+        <text x="373" y="74" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8de2da" font-weight="600" text-anchor="middle">PA</text>
+
+        <!-- Waveform section -->
+        <line x1="16" y1="108" x2="404" y2="108" stroke="rgba(141,226,218,0.08)" stroke-width="0.5"/>
+        <text x="16" y="122" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(141,226,218,0.45)" letter-spacing="1">FREQUENCY RESPONSE</text>
+
+        <!-- Animated sine wave -->
+        <path d="M16 160 C36 140 56 180 76 160 C96 140 116 180 136 160 C156 140 176 180 196 160 C216 140 236 180 256 160 C276 140 296 180 316 160 C336 140 356 180 376 160 L404 160"
+          stroke="#14958b" stroke-width="1.5" fill="none" class="wave-trace-signal" opacity="0.5"/>
+        <path d="M16 155 C46 125 86 185 126 155 C166 125 206 185 246 155 C286 125 326 185 366 155 L404 155"
+          stroke="#35b5aa" stroke-width="2" fill="none" class="wave-trace-signal" opacity="0.8" style="animation-duration:3.4s"/>
+        <path d="M16 158 C56 118 116 198 176 158 C236 118 296 198 356 158 L404 158"
+          stroke="#8de2da" stroke-width="1" fill="none" class="wave-trace-signal" opacity="0.4" style="animation-duration:2.1s"/>
+
+        <!-- Frequency band labels -->
+        <line x1="16" y1="200" x2="404" y2="200" stroke="rgba(141,226,218,0.08)" stroke-width="0.5"/>
+
+        <rect x="16" y="212" width="110" height="18" rx="2" fill="rgba(20,149,139,0.08)" stroke="rgba(20,149,139,0.2)" stroke-width="0.8"/>
+        <text x="24" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(141,226,218,0.6)" letter-spacing="1">SUB-6</text>
+        <text x="80" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(255,255,255,0.3)" letter-spacing="1">≤ 6 GHZ</text>
+
+        <rect x="143" y="212" width="124" height="18" rx="2" fill="rgba(20,149,139,0.08)" stroke="rgba(20,149,139,0.2)" stroke-width="0.8"/>
+        <text x="151" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(141,226,218,0.6)" letter-spacing="1">MICROWAVE</text>
+        <text x="214" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(255,255,255,0.3)" letter-spacing="1">6–38 GHZ</text>
+
+        <rect x="283" y="212" width="121" height="18" rx="2" fill="rgba(53,181,170,0.12)" stroke="rgba(141,226,218,0.3)" stroke-width="0.8"/>
+        <text x="291" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="#8de2da" letter-spacing="1">MMWAVE</text>
+        <text x="342" y="224" font-family="IBM Plex Mono, monospace" font-size="6.5" fill="rgba(141,226,218,0.5)" letter-spacing="1">30+ GHZ</text>
+
+        <!-- Bottom bar -->
+        <line x1="16" y1="244" x2="404" y2="244" stroke="rgba(141,226,218,0.08)" stroke-width="0.5"/>
+        <text x="16" y="258" font-family="IBM Plex Mono, monospace" font-size="6" fill="rgba(255,255,255,0.18)" letter-spacing="1">RFIC · MMIC · EM ANALYSIS · VALIDATION</text>
+        <circle cx="398" cy="254" r="2.5" fill="rgba(141,226,218,0.3)"/>
+      </svg>
+    </div>
+  </PageHero>
 
   <section class="section section--dark" aria-labelledby="capabilities-overview-title">
     <div class="container capability-split">
